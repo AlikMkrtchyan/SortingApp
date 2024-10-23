@@ -25,15 +25,27 @@ public class DataObject {
         this.rootVegetables = new ArrayList<>();
     }
 
-    public void add(Book book) {
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public List<RootVegetable> getRootVegetables() {
+        return rootVegetables;
+    }
+
+    public void addBook(Book book) {
         books.add(book);
     }
 
-    public void add(Car car) {
+    public void addCar(Car car) {
         cars.add(car);
     }
 
-    public void add(RootVegetable rootVegetable) {
+    public void addRootVegetable(RootVegetable rootVegetable) {
         rootVegetables.add(rootVegetable);
     }
 
