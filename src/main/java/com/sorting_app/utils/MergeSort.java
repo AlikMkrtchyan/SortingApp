@@ -3,7 +3,7 @@ package com.sorting_app.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-class MergeSort {
+public class MergeSort {
     public static <T extends Comparable<T>> void mergeSort(List<T> list) {
         if (list.size() < 2) {
             return;

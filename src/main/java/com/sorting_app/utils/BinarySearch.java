@@ -2,7 +2,7 @@ package com.sorting_app.utils;
 
 import java.util.List;
 
-class BinarySearch {
+public class BinarySearch {
     public static <T extends Comparable<T>> int binarySearch(List<T> list, T key) {
         int low = 0;
         int high = list.size() - 1;
