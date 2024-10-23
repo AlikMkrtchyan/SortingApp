@@ -4,10 +4,10 @@ import com.sorting_app.list.ClassesList;
 
 import java.util.Scanner;
 
-public class ItemInputManager {
+public class ConsoleInput {
     private ClassesList classesList;
 
-    public ItemInputManager (ClassesList classesList) {
+    public ConsoleInput(ClassesList classesList) {
         this.classesList = classesList;
     }
 

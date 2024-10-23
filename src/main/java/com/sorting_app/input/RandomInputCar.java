@@ -1,8 +1,6 @@
 package com.sorting_app.input;
 
-import com.sorting_app.model.Book;
 import com.sorting_app.model.Car;
-import com.sorting_app.model.Korneplod;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,17 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomInputManager {
+public class RandomInputCar {
 
     private List<Car> loadCarList = new ArrayList<>();
-    private List<Book> bookList = new ArrayList<>();
-    private List<Korneplod> korneplodList = new ArrayList<>();
     private List<Car> generateCar = new ArrayList<>();
 
-    public RandomInputManager(String carFilePath) {
+    public RandomInputCar(String carFilePath) {
         loadCarsCSV(carFilePath);
     }
-//Метод для загрузки данных из файла
+
+    //Метод для загрузки данных из файла
     public void loadCarsCSV(String carFilePath) {
         File file = new File(carFilePath);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -33,11 +30,17 @@ public class RandomInputManager {
                 //строка разбивается на массив
                 String[] values = line.split(",");
                 if (values.length == 3) {
+
                     String model = values[0].trim();
                     int power = Integer.parseInt(values[1].trim());
                     int year = Integer.parseInt(values[2].trim());
-                    loadCarList.add(new Car(model, power, year));
-                    System.out.println("Загружено машин" + loadCarList.size());
+                    loadCarList.add(new Car.CarBuilder().setModel(model)
+                            .setPower(power)
+                            .setYear(year)
+                            .build());
+                    //Проверка наполнения loadCarList
+                    //System.out.println("Загружено машин" + loadCarList.size());
+                    //System.out.println("записанные машины" + loadCarList.toString());
                 }
             }
         } catch (IOException e) {
@@ -47,7 +50,7 @@ public class RandomInputManager {
 
     //Метод для рандомной генерации списка машин
     //count - выбор кол-ва машин для добавления
-    public void generateCarList  (int count) {
+    public void generateCarList(int count) {
         Random random = new Random();
         generateCar.clear();
         System.out.println("Рандомные машины");
@@ -61,18 +64,17 @@ public class RandomInputManager {
 
     //Метод для вывода списка машин
 
-    public  void  printCarList () {
+    public void printCarList() {
         if (generateCar.isEmpty()) {
             System.out.println("Список машин  пустой");
         } else {
             System.out.println("Список машин:");
-            for (int i =0; i < generateCar.size(); i++) {
+            for (int i = 0; i < generateCar.size(); i++) {
                 System.out.println(generateCar.get(i));
             }
         }
     }
-
-    }
+}
 
 
 

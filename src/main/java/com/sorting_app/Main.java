@@ -1,9 +1,8 @@
 package com.sorting_app;
 
-import com.sorting_app.input.ItemInputManager;
-import com.sorting_app.input.RandomInputManager;
-import com.sorting_app.list.ClassesList;
-import com.sorting_app.list.WriterCSV;
+import com.sorting_app.input.RandomInputBook;
+import com.sorting_app.input.RandomInputCar;
+import com.sorting_app.input.RandomInputKorneplod;
 
 import java.io.IOException;
 
@@ -21,12 +20,24 @@ public class Main {
 //        writerCSV.writeCars(classesList.getCarList(), "CARS.csv");
 //        classesList.printCars();
 
-        String file = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepCar.csv";
+        String fileCar = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepCar.csv";
+        String fileBook = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepBook.csv";
+        String fileKorneplod = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepKorneplod.csv";
 
-        RandomInputManager randomInputManager = new RandomInputManager(file);
+        //Запись рандомных машин
+        RandomInputCar randomInputManager = new RandomInputCar(fileCar);
         randomInputManager.generateCarList(3);
         randomInputManager.printCarList();
 
+        //Запись рандомных книг
+        RandomInputBook randomInputBook = new RandomInputBook(fileBook);
+        randomInputBook.generateBookList(3);
+        randomInputBook.printBookList();
+
+        //Запись рандомных овощей
+        RandomInputKorneplod randomInputKorneplod = new RandomInputKorneplod(fileKorneplod);
+        randomInputKorneplod.generateKorneplodList(3);
+        randomInputKorneplod.printKorneplodsList();
 
     }
 }
