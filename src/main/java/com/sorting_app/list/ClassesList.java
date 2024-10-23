@@ -14,7 +14,7 @@ public class ClassesList {
     private List<Book> bookList;
     private List<Korneplod> korneplodList;
 
-    public  ClassesList() {
+    public ClassesList() {
         carList = new ArrayList<>();
         bookList = new ArrayList<>();
         korneplodList = new ArrayList<>();
@@ -36,10 +36,11 @@ public class ClassesList {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введи модель");
         String model = scanner.nextLine();
-        System.out.println("Выберите мощность");
+        System.out.println("Введи мощность");
         int power = scanner.nextInt();
-        System.out.println("Выберите год выпуска");
+        System.out.println("Введи год выпуска");
         int year = scanner.nextInt();
+        if(model.isEmpty()){model = null;}
         Car car = new Car.CarBuilder().setModel(model)
                 .setPower(power)
                 .setYear(year)
@@ -49,10 +50,14 @@ public class ClassesList {
 
     public void addBook() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введи название, автора, кол-во страниц");
+        System.out.println("Введи название книги");
         String name = scanner.nextLine();
+        System.out.println("Введи автора");
         String autor = scanner.nextLine();
+        System.out.println("Введи кол-во страниц");
         int pages = scanner.nextInt();
+        if(name.isEmpty()){name = null;}
+        if(autor.isEmpty()){autor = null;}
         Book book = new Book.BookBuilder().setBook(name)
                 .setAuthor(autor)
                 .setPages(pages)
@@ -62,11 +67,16 @@ public class ClassesList {
 
     public void addKorneplod() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введи тип, вес, цвет");
+        System.out.println("Введи тип");
         String type = scanner.nextLine();
-        int weight = scanner.nextInt();
+        System.out.println("Введи вес");
+        Integer weight = scanner.nextInt();
+        System.out.println("Введи цвет");
         String color = scanner.nextLine();
-        Korneplod korneplod = new Korneplod.KorneplodBuilder().setType(type)
+        if(type.isEmpty()){type = null;}
+        if(color.isEmpty()){color = null;}
+        Korneplod korneplod =
+                new Korneplod.KorneplodBuilder().setType(type)
                 .setWeight(weight)
                 .setColor(color)
                 .build();

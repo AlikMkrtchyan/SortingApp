@@ -1,9 +1,7 @@
 package com.sorting_app;
 
-import com.sorting_app.input.RandomInputBook;
-import com.sorting_app.input.RandomInputCar;
-import com.sorting_app.input.RandomInputKorneplod;
-import com.sorting_app.input.ReadFileInput;
+import com.sorting_app.input.*;
+import com.sorting_app.list.ClassesList;
 
 import java.io.IOException;
 
@@ -11,8 +9,23 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
-//        ClassesList classesList = new ClassesList();
-//        ItemInputManager itemInputManager = new ItemInputManager(classesList);
+        ClassesList classesList = new ClassesList();
+        ConsoleInput consoleInput = new ConsoleInput(classesList);
+
+        while (true){
+            consoleInput.addItem();
+            if(!classesList.getCarList().isEmpty()){
+                System.out.println(classesList.getCarList());
+            }
+            if(!classesList.getBookList().isEmpty()){
+                System.out.println(classesList.getBookList());
+            }
+            if(!classesList.getKorneplodList().isEmpty()){
+                System.out.println(classesList.getKorneplodList());
+            }
+        }
+
+        //ItemInputManager itemInputManager = new ItemInputManager(classesList);
 //        WriterCSV writerCSV = new WriterCSV();
 //
 //        itemInputManager.addItem();
@@ -21,10 +34,10 @@ public class Main {
 //        writerCSV.writeCars(classesList.getCarList(), "CARS.csv");
 //        classesList.printCars();
 
-        String fileCar = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepCar.csv";
-        String fileBook = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepBook.csv";
-        String fileKorneplod = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepKorneplod.csv";
-        String fileTest = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\TestFile.csv";
+//        String fileCar = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepCar.csv";
+//        String fileBook = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepBook.csv";
+//        String fileKorneplod = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepKorneplod.csv";
+//        String fileTest = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\TestFile.csv";
 
         //Запись рандомных машин
 //        RandomInputCar randomInputManager = new RandomInputCar(fileCar);
@@ -42,8 +55,8 @@ public class Main {
 //        randomInputKorneplod.printKorneplodsList();
 
         //Чтение из файла
-        ReadFileInput readFileInput = new ReadFileInput();
-        readFileInput.readFile(fileTest);
-        readFileInput.printData(fileTest);
+//        ReadFileInput readFileInput = new ReadFileInput();
+//        readFileInput.readFile(fileTest);
+//        readFileInput.printData(fileTest);
     }
 }
