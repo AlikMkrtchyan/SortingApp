@@ -1,7 +1,7 @@
 package com.sorting_app;
 
+import com.sorting_app.data.DataObject;
 import com.sorting_app.input.*;
-import com.sorting_app.list.ClassesList;
 
 import java.io.IOException;
 
@@ -9,12 +9,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
-        ClassesList classesList = new ClassesList();
-        ConsoleInput consoleInput = new ConsoleInput(classesList);
+        DataObject dataObject = new DataObject();
+        ConsoleInput consoleInput = new ConsoleInput(dataObject);
 
         while (true){
             consoleInput.addItem();
-            if(!classesList.getCarList().isEmpty()){
+            if(!d().isEmpty()){
                 System.out.println(classesList.getCarList());
             }
             if(!classesList.getBookList().isEmpty()){

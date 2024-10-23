@@ -1,15 +1,15 @@
 package com.sorting_app.input;
 
-import com.sorting_app.list.ClassesList;
+import com.sorting_app.data.DataObject;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleInput {
-    private final ClassesList classesList;
+    private final DataObject dataObject;
 
-    public ConsoleInput(ClassesList classesList) {
-        this.classesList = classesList;
+    public ConsoleInput(DataObject dataObject) {
+        this.dataObject = dataObject;
     }
 
     public void addItem () {
@@ -21,11 +21,11 @@ public class ConsoleInput {
             scanner.nextLine();
 
             if (choosse == 1) {
-                classesList.addCar();
+                dataObject.getCars();
             }else if (choosse == 2) {
-                classesList.addBook();
+                dataObject.getBooks();
             }else if (choosse == 3) {
-                classesList.addKorneplod();
+                dataObject.getRootVegetables();
             } else  {
                 System.out.println("Неверный ввод");
             }

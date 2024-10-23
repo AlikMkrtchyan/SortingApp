@@ -1,7 +1,6 @@
 package com.sorting_app.input;
 
-import com.sorting_app.model.Book;
-import com.sorting_app.model.Korneplod;
+import com.sorting_app.model.RootVegetable;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,8 +11,8 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomInputKorneplod {
-    private List<Korneplod> loadKorneplodList = new ArrayList<>();
-    private List<Korneplod> generateKorneplod = new ArrayList<>();
+    private List<RootVegetable> loadKorneplodList = new ArrayList<>();
+    private List<RootVegetable> generateKorneplod = new ArrayList<>();
 
     public RandomInputKorneplod(String korneplodFilePath) {
         loadKorneplodsCSV(korneplodFilePath);
@@ -34,7 +33,7 @@ public class RandomInputKorneplod {
                     String type = values[0].trim();
                     int weight = Integer.parseInt(values[1].trim());
                     String color = values[2].trim();
-                    loadKorneplodList.add(new Korneplod.KorneplodBuilder()
+                    loadKorneplodList.add(new RootVegetable.RootVegetableBuilder()
                             .setType(type)
                             .setWeight(weight)
                             .setColor(color)
@@ -57,8 +56,8 @@ public class RandomInputKorneplod {
         System.out.println("Рандомные овощи");
         for (int i = 0; i < count; i++) {
             int randomIndex = random.nextInt(loadKorneplodList.size());
-            Korneplod randomKorneplod = loadKorneplodList.get(randomIndex);
-            generateKorneplod.add(randomKorneplod);
+            RootVegetable randomRootVegetable = loadKorneplodList.get(randomIndex);
+            generateKorneplod.add(randomRootVegetable);
         }
     }
 

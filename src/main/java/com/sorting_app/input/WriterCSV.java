@@ -1,8 +1,8 @@
-package com.sorting_app.list;
+package com.sorting_app.input;
 
 import com.sorting_app.model.Car;
 import com.sorting_app.model.Book;
-import com.sorting_app.model.Korneplod;
+import com.sorting_app.model.RootVegetable;
 
 
 import java.io.BufferedWriter;
@@ -38,7 +38,7 @@ public class WriterCSV {
             writer.write("Название, Автор, Кол-во страниц \n");
 
             for (Book book : bookList) {
-                writer.write(book.getName() +
+                writer.write(book.getBook() +
                         "," + book.getAuthor() + "," + book.getPages());
                 writer.newLine();
             }
@@ -51,12 +51,12 @@ public class WriterCSV {
     }
 
 //    Запись корнеплодов
-    public void writeKorneplods(List<Korneplod> korneplodList, String fileName) throws IOException {
+    public void writeKorneplods(List<RootVegetable> korneplodList, String fileName) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             //Заголовок списка
             writer.write("Вид, Вес, Цвет \n");
 
-            for (Korneplod korn : korneplodList) {
+            for (RootVegetable korn : korneplodList) {
                 writer.write(korn.getType() +
                         "," + korn.getWeight() + "," + korn.getColor());
                 writer.newLine();

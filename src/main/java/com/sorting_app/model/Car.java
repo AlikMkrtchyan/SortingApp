@@ -1,19 +1,17 @@
 package com.sorting_app.model;
 
+
 import java.util.Comparator;
 
 public class Car implements Comparable<Car> {
-    private  String model;
-    private  int power;
-    private  int year;
+    private final String model;
+    private final int power;
+    private final int year;
 
-    public Car(CarBuilder carBuilder) {
+    private Car(CarBuilder carBuilder) {
         this.model = carBuilder.model;
         this.power = carBuilder.power;
         this.year = carBuilder.year;
-    }
-
-    public Car(String model, int power, int year) {
     }
 
     public String getModel() {
@@ -30,7 +28,8 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return Comparator.comparing(Car::getModel)
+        return Comparator.nullsLast(Comparator.comparing(Car::getModel,
+                        Comparator.nullsLast(Comparator.naturalOrder())))
                 .thenComparingInt(Car::getPower)
                 .thenComparingInt(Car::getYear)
                 .compare(this, o);
