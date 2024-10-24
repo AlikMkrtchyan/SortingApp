@@ -13,9 +13,10 @@ import java.util.Random;
 public class RandomInputRootVegetable {
     private List<RootVegetable> loadKorneplodList = new ArrayList<>();
     private List<RootVegetable> generateKorneplod = new ArrayList<>();
+    private static final String FILE_NAME = "src/main/resources/KeepRootVegetable.csv";
 
-    public RandomInputRootVegetable(String korneplodFilePath) {
-        loadKorneplodsCSV(korneplodFilePath);
+    public RandomInputRootVegetable() {
+        loadKorneplodsCSV(FILE_NAME);
     }
 
     //Метод для загрузки данных из файла

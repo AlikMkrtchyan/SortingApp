@@ -3,10 +3,7 @@ package com.sorting_app.input;
 import com.sorting_app.model.Book;
 import com.sorting_app.model.Car;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,27 +11,26 @@ import java.util.Random;
 public class RandomInputBook {
     private List<Book> loadBookList = new ArrayList<>();
     private List<Book> generateBook = new ArrayList<>();
-    private String line;
+    private static final String FILE_NAME = "src/main/resources/KeepBook.csv";
 
-    public RandomInputBook(String bookFilePath) {
-        loadBooksCSV(bookFilePath);
-    }
+    public RandomInputBook() {loadBooksCSV(FILE_NAME);}
 
     //Метод для загрузки данных из файла
     public void loadBooksCSV(String bookFilePath) {
         File file = new File(bookFilePath);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            //храним строку из файла
+
+            String line;//храним строку из файла
             while ((line = reader.readLine()) != null) {
                 //разбиваем строку файла на отдельные значения
                 //строка разбивается на массив
                 String[] values = line.split(",");
                 if (values.length == 3) {
+
                     String name = values[0].trim();
                     String autor = values[1].trim();
                     int pages = Integer.parseInt(values[2].trim());
-                    loadBookList.add(new Book.BookBuilder()
-                            .setBook(name)
+                    loadBookList.add(new Book.BookBuilder().setBook(name)
                             .setAuthor(autor)
                             .setPages(pages)
                             .build());
@@ -48,7 +44,7 @@ public class RandomInputBook {
         }
     }
 
-    //Метод рандомно генерирующий список книг
+    //Метод для рандомной генерации списка книг
     //count - выбор кол-ва книг для добавления
     public void generateBookList(int count) {
         Random random = new Random();
@@ -61,7 +57,9 @@ public class RandomInputBook {
         }
     }
 
+
     //Метод для вывода списка книг
+
     public void printBookList() {
         if (generateBook.isEmpty()) {
             System.out.println("Список книг  пустой");

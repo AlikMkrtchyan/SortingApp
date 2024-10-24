@@ -14,9 +14,10 @@ public class RandomInputCar {
 
     private List<Car> loadCarList = new ArrayList<>();
     private List<Car> generateCar = new ArrayList<>();
+    private static final String FILE_NAME = "src/main/resources/KeepCar.csv";
 
-    public RandomInputCar(String carFilePath) {
-        loadCarsCSV(carFilePath);
+    public RandomInputCar() {
+        loadCarsCSV(FILE_NAME);
     }
 
     //Метод для загрузки данных из файла
