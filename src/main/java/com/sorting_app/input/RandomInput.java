@@ -169,7 +169,7 @@ public class RandomInput {
         if (dataObject.getCars().isEmpty()) {
             System.out.println("Список автомобилей пуст");
         } else {
-            System.out.println("Список книг:");
+            System.out.println("Список автомобилей:");
             for (int i = 0; i < dataObject.getCars().size(); i++) {
                 System.out.println(dataObject.getCars().get(i));
             }
@@ -189,9 +189,9 @@ public class RandomInput {
 
     public void printRootVegetables() {
         if (dataObject.getRootVegetables().isEmpty()) {
-            System.out.println("Список овощей  пуст");
+            System.out.println("Список корнеплодов  пуст");
         } else {
-            System.out.println("Список овощей:");
+            System.out.println("Список корнеплодов:");
             for (int i = 0; i < dataObject.getRootVegetables().size(); i++) {
                 System.out.println(dataObject.getRootVegetables().get(i));
             }
