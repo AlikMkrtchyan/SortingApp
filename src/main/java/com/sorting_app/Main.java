@@ -10,8 +10,8 @@ public class Main {
         while (true){
             try {
                 list.InputBook();
-            } catch (ValidationException e) {
-                System.out.println(e.getMessage());
+            } catch (ValidationException validation) {
+                System.out.println(validation.getMessage());
             }
             list.printBooks();
         }

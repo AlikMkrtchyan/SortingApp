@@ -62,7 +62,7 @@ public class ClassesList {
                     .build();
             dataObject.addBook(book);
         } catch (InputMismatchException exception) {
-                throw new ValidationException("Необходимо ввести цифры");
+            throw new ValidationException("Необходимо ввести цифры");
         }
     }
 
