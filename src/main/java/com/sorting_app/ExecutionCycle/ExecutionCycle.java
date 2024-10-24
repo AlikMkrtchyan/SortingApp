@@ -2,35 +2,38 @@ package com.sorting_app.ExecutionCycle;
 
 import com.sorting_app.Utils.Printer;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class ExecutionCycle {
     private static String typeOfCollection = "";
-    private static Integer lengthOfCollection; /// длина или размер?
+    private static int lengthOfCollection;
+    /// длина или размер?
     private static List collectionList;
     private static final Scanner scanner = new Scanner(System.in);
-    private static String command;
+    private static int command;
 
     public static void executionCycle() {
-        Printer.printHelp();
+
         boolean isExit = false;
 
         while (!isExit) {
-            System.out.print("Введите команду: ");
-            command = scanner.nextLine();
-
+            Printer.printHelp();
+            try {
+                System.out.print("Введите команду: ");
+                command = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Команда может быть только в числовом виде.");
+            }
             switch (command) {
-                case "fill": {
+                case 1: {
                     fillCollection();
                     System.out.println();
                     System.out.println("вывод коллекции");
-                    for(Object c: collectionList) {
-                        System.out.println(c);
-                    }
                     break;
                 }
-                case "find": {
+                case 2: {
                     findElement();
                     break;
                 }
@@ -38,7 +41,7 @@ public class ExecutionCycle {
 //                    Printer.printHelp();
 //                    break;
 //                }
-                case "exit": {
+                case 3: {
                     isExit = true;
                     break;
                 }
@@ -47,9 +50,9 @@ public class ExecutionCycle {
                     break;
                 }
             }
-            Printer.printHelp();
+            scanner.nextLine();
         }
-        System.out.println("Программа завершена");
+        System.out.println("\nПрограмма завершена");
     }
 
     private static void fillCollection() {
