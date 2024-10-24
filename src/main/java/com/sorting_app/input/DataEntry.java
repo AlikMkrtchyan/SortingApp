@@ -140,10 +140,10 @@ public class DataEntry {
     }
 
     public void printRootVegetable() {
-        if (dataObject.rootVegetables.isEmpty()) {
+        if (dataObject.getRootVegetables().isEmpty()) {
             System.out.println("Нет корнеплода в списке");
         } else {
-            for (RootVegetable rootVegetable : dataObject.rootVegetables) {
+            for (RootVegetable rootVegetable : dataObject.getRootVegetables()) {
                 System.out.println(rootVegetable);
             }
         }

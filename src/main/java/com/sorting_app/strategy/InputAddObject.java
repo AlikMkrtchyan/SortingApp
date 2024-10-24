@@ -11,7 +11,7 @@ public class InputAddObject implements IStrategy{
 
     @Override
     public String getResult() {
-        consoleInput.addItem();
+        consoleInput.runObject();
         return "Ввод данных в коллекцию выполнен";
     }
 }

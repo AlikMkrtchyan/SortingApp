@@ -1,5 +1,7 @@
 package com.sorting_app;
 
+import com.sorting_app.handler.ValidationException;
+import com.sorting_app.input.RandomInput;
 import com.sorting_app.strategy.InputAddObject;
 
 import java.io.IOException;
@@ -7,22 +9,24 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-
-
         InputAddObject inputAddObject = new InputAddObject();
+        RandomInput randomInput = new RandomInput();
 
-while (true){
+        while (true) {
+            try {
+                randomInput.selectRandomObject();
+            } catch (ValidationException validationException) {
+                System.out.println(validationException.getMessage());
+            }
 
-inputAddObject.getResult();
-
-}
+        }
 
 
         //ItemInputManager itemInputManager = new ItemInputManager(classesList);
 //        WriterCSV writerCSV = new WriterCSV();
 //
-//        itemInputManager.addItem();
-//        itemInputManager.addItem();
+//        itemInputManager.runObject();
+//        itemInputManager.runObject();
 //
 //        writerCSV.writeCars(classesList.getCarList(), "CARS.csv");
 //        classesList.printCars();

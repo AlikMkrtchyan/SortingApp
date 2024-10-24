@@ -9,9 +9,9 @@ import java.util.List;
 
 public class DataObject {
 
-    public List<Book> books;
-    public List<Car> cars;
-    public List<RootVegetable> rootVegetables;
+    private final List<Book> books;
+    private final List<Car> cars;
+    private final List<RootVegetable> rootVegetables;
 
     public DataObject(List<Book> books, List<Car> cars, List<RootVegetable> rootVegetables) {
         this.books = books;

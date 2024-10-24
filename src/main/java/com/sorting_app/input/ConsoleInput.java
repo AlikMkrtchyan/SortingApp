@@ -2,8 +2,6 @@ package com.sorting_app.input;
 
 import com.sorting_app.handler.ValidationException;
 
-import java.util.InputMismatchException;
-
 public class ConsoleInput {
     private final DataEntry dataEntry;
 
@@ -11,7 +9,7 @@ public class ConsoleInput {
         this.dataEntry = dataEntry;
     }
 
-    public void addItem() {
+    public void runObject() {
         try {
             dataEntry.selectObject();
         } catch (ValidationException exception) {
