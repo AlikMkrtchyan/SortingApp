@@ -34,17 +34,17 @@ public class RandomInput {
             int count = scanner.nextInt();
             switch (choose) {
                 case 1: {
-                    loadCarCSV();
+                    loadCarCSV(loadCarList, count);
                     generateCarList(count);
                     break;
                 }
                 case 2: {
-                    loadBooksCSV();
+                    loadBooksCSV(loadBookList);
                     generateBookList(count);
                     break;
                 }
                 case 3: {
-                    loadRootVegetableCSV();
+                    loadRootVegetableCSV(loadRootVegetableList);
                     generateRootVegetables(count);
                     break;
                 }
@@ -58,11 +58,12 @@ public class RandomInput {
         }
     }
 
-    public void loadCarCSV() throws ValidationException {
+    public void loadCarCSV(List<Car> loadCarList, int count) throws ValidationException {
         File file = new File(FILE_PATH_CAR);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             //храним строку из файла
-            while ((line = reader.readLine()) != null) {
+           for(int i = 0; i < count; i++){
+               line = reader.readLine();
                 //разбиваем строку файла на отдельные значения
                 //строка разбивается на массив
                 String[] values = line.split(",");
@@ -81,7 +82,7 @@ public class RandomInput {
         }
     }
 
-    public void loadBooksCSV() throws ValidationException {
+    public void loadBooksCSV(List<Book> loadBookList) throws ValidationException {
         File file = new File(FILE_PATH_BOOK);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((line = reader.readLine()) != null) {
@@ -102,7 +103,7 @@ public class RandomInput {
         }
     }
 
-    public void loadRootVegetableCSV() throws ValidationException {
+    public void loadRootVegetableCSV(List<RootVegetable> loadRootVegetableList) throws ValidationException {
         File file = new File(FILE_PATH_ROOT_VEGETABLE);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((line = reader.readLine()) != null) {
