@@ -37,7 +37,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public String toString() {
-        return String.format("Модель: %s; Мощность: %d; Год производства: %d",
+        return String.format("Автомобиль - Модель: %s; Мощность: %d; Год производства: %d",
                 model, power, year);
     }
 

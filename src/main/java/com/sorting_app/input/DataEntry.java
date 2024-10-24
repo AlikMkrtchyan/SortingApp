@@ -11,15 +11,43 @@ import java.util.Scanner;
 
 
 public class DataEntry {
-
     DataObject dataObject = new DataObject();
 
+    public void selectObject() throws ValidationException {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Выбери тип для заполнения:\n" +
+                    "1 - car, 2 - book, 3 - root vegetable");
+            int choosse = scanner.nextInt();
 
-    public void InputCar() {
+            int count = scanner.nextInt();
+            for (int i = 0; i< count; i++){
+                switch (choosse) {
+                    case 1:
+                        InputCar();
+                        break;
+                    case 2:
+                        InputBook();
+                        break;
+                    case 3:
+                        InputRootVegetable();
+                        break;
+                    default:
+                        System.out.println("Неверный ввод, введите цифру от 1 до 3");
+                        break;
+                }
+            }
+
+        } catch (InputMismatchException e) {
+            throw new ValidationException("Введен неверный тип данных");
+        }
+    }
+
+    public void InputCar() throws ValidationException {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Введи модель");
-            String model = scanner.nextLine().strip().toLowerCase();
+            String model = scanner.nextLine().strip().toUpperCase();
             System.out.println("Введи мощность");
             int power = scanner.nextInt();
             System.out.println("Введи год выпуска");
@@ -27,18 +55,16 @@ public class DataEntry {
             if (model.isEmpty()) {
                 model = null;
             }
+
             Car car = new Car.CarBuilder().setModel(model)
                     .setPower(power)
                     .setYear(year)
                     .build();
             dataObject.addCar(car);
         } catch (InputMismatchException exception) {
-            try {
-                throw new ValidationException("Необходимо ввести цифры");
-            } catch (ValidationException e) {
-                throw new RuntimeException(e);
-            }
+            throw new ValidationException("Введен неверный тип данных");
         }
+
     }
 
     public void InputBook() throws ValidationException {
@@ -62,34 +88,37 @@ public class DataEntry {
                     .build();
             dataObject.addBook(book);
         } catch (InputMismatchException exception) {
-            throw new ValidationException("Необходимо ввести цифры");
+            throw new ValidationException("Введен неверный тип данных");
         }
     }
 
-    public void InputRootVegetable() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введи тип");
-        String type = scanner.nextLine();
-        System.out.println("Введи вес");
-        int weight = scanner.nextInt();
-        System.out.println("Введи цвет");
-        String color = scanner.nextLine();
-        if (type.isEmpty()) {
-            type = null;
+    public void InputRootVegetable() throws ValidationException {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Введи тип");
+            String type = scanner.nextLine();
+            System.out.println("Введи вес");
+            int weight = scanner.nextInt();
+            System.out.println("Введи цвет");
+            String color = scanner.nextLine();
+            if (type.isEmpty()) {
+                type = null;
+            }
+            if (color.isEmpty()) {
+                color = null;
+            }
+            RootVegetable rootVegetable =
+                    new RootVegetable.RootVegetableBuilder().setType(type)
+                            .setWeight(weight)
+                            .setColor(color)
+                            .build();
+            dataObject.addRootVegetable(rootVegetable);
+        } catch (InputMismatchException exception) {
+            throw new ValidationException("Введен неверный тип данных");
         }
-        if (color.isEmpty()) {
-            color = null;
-        }
-
-        RootVegetable rootVegetable =
-                new RootVegetable.RootVegetableBuilder().setType(type)
-                        .setWeight(weight)
-                        .setColor(color)
-                        .build();
-        dataObject.addRootVegetable(rootVegetable);
     }
 
-    //метод для вывода машин
+    //методы вывода данных Объектов
     public void printCars() {
         if (dataObject.getCars().isEmpty()) {
             System.out.println("Нет машин в списке");

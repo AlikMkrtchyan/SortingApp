@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomInputKorneplod {
+public class RandomInputRootVegetable {
     private List<RootVegetable> loadKorneplodList = new ArrayList<>();
     private List<RootVegetable> generateKorneplod = new ArrayList<>();
 
-    public RandomInputKorneplod(String korneplodFilePath) {
+    public RandomInputRootVegetable(String korneplodFilePath) {
         loadKorneplodsCSV(korneplodFilePath);
     }
 

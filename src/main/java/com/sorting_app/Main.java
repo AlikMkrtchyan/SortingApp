@@ -1,7 +1,7 @@
 package com.sorting_app;
 
-import com.sorting_app.data.DataObject;
-import com.sorting_app.input.*;
+import com.sorting_app.input.ConsoleInput;
+import com.sorting_app.input.DataEntry;
 
 import java.io.IOException;
 
@@ -9,21 +9,18 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
-        DataObject dataObject = new DataObject();
-        ConsoleInput consoleInput = new ConsoleInput(dataObject);
+        DataEntry dataEntry = new DataEntry();
+        ConsoleInput consoleInput = new ConsoleInput(dataEntry);
 
-        while (true){
-            consoleInput.addItem();
-            if(!d().isEmpty()){
-                System.out.println(classesList.getCarList());
-            }
-            if(!classesList.getBookList().isEmpty()){
-                System.out.println(classesList.getBookList());
-            }
-            if(!classesList.getKorneplodList().isEmpty()){
-                System.out.println(classesList.getKorneplodList());
-            }
-        }
+while (true){
+
+
+
+    dataEntry.printBooks();
+    dataEntry.printCars();
+    dataEntry.printRootVegetable();
+}
+
 
         //ItemInputManager itemInputManager = new ItemInputManager(classesList);
 //        WriterCSV writerCSV = new WriterCSV();
