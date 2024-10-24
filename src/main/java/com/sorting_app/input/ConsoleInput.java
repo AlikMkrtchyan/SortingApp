@@ -11,12 +11,11 @@ public class ConsoleInput {
         this.dataEntry = dataEntry;
     }
 
-    public void addItem ()  {
+    public void addItem() {
         try {
             dataEntry.selectObject();
-        } catch (ValidationException validationException){
-            validationException.getMessage();
+        } catch (ValidationException exception) {
+            System.out.println(exception.getMessage());
         }
-
     }
 }

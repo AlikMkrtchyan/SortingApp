@@ -1,7 +1,6 @@
 package com.sorting_app;
 
-import com.sorting_app.input.ConsoleInput;
-import com.sorting_app.input.DataEntry;
+import com.sorting_app.strategy.InputAddObject;
 
 import java.io.IOException;
 
@@ -9,16 +8,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
-        DataEntry dataEntry = new DataEntry();
-        ConsoleInput consoleInput = new ConsoleInput(dataEntry);
+
+        InputAddObject inputAddObject = new InputAddObject();
 
 while (true){
 
+inputAddObject.getResult();
 
-
-    dataEntry.printBooks();
-    dataEntry.printCars();
-    dataEntry.printRootVegetable();
 }
 
 
@@ -33,7 +29,7 @@ while (true){
 
 //        String fileCar = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepCar.csv";
 //        String fileBook = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepBook.csv";
-//        String fileKorneplod = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepKorneplod.csv";
+//        String fileKorneplod = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\KeepRootVegetable.csv";
 //        String fileTest = "C:\\Users\\wwwco\\IdeaProjects\\SortingApp\\src\\main\\resources\\TestFile.csv";
 
         //Запись рандомных машин

@@ -19,31 +19,31 @@ public class DataEntry {
             System.out.println("Выбери тип для заполнения:\n" +
                     "1 - car, 2 - book, 3 - root vegetable");
             int choosse = scanner.nextInt();
-
+            System.out.println("Введите количество создаваемых объектов");
             int count = scanner.nextInt();
-            for (int i = 0; i< count; i++){
+            for (int i = 1; i < count+1; i++){
+                System.out.println("Создаваемый объект №"+i);
                 switch (choosse) {
                     case 1:
-                        InputCar();
+                        inputCar();
                         break;
                     case 2:
-                        InputBook();
+                        inputBook();
                         break;
                     case 3:
-                        InputRootVegetable();
+                        inputRootVegetable();
                         break;
                     default:
                         System.out.println("Неверный ввод, введите цифру от 1 до 3");
                         break;
                 }
             }
-
         } catch (InputMismatchException e) {
             throw new ValidationException("Введен неверный тип данных");
         }
     }
 
-    public void InputCar() throws ValidationException {
+    public void inputCar() throws ValidationException {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Введи модель");
@@ -55,7 +55,6 @@ public class DataEntry {
             if (model.isEmpty()) {
                 model = null;
             }
-
             Car car = new Car.CarBuilder().setModel(model)
                     .setPower(power)
                     .setYear(year)
@@ -67,7 +66,7 @@ public class DataEntry {
 
     }
 
-    public void InputBook() throws ValidationException {
+    public void inputBook() throws ValidationException {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Введи название книги");
@@ -92,13 +91,14 @@ public class DataEntry {
         }
     }
 
-    public void InputRootVegetable() throws ValidationException {
+    public void inputRootVegetable() throws ValidationException {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Введи тип");
             String type = scanner.nextLine();
             System.out.println("Введи вес");
             int weight = scanner.nextInt();
+            scanner.nextLine();
             System.out.println("Введи цвет");
             String color = scanner.nextLine();
             if (type.isEmpty()) {
