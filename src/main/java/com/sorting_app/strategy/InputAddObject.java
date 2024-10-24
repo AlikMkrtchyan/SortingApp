@@ -1,17 +1,20 @@
 package com.sorting_app.strategy;
 
+import com.sorting_app.handler.ValidationException;
 import com.sorting_app.input.ConsoleInput;
-import com.sorting_app.input.DataEntry;
 
 public class InputAddObject implements IStrategy{
 
-    DataEntry dataEntry = new DataEntry();
-    ConsoleInput consoleInput = new ConsoleInput(dataEntry);
+    ConsoleInput consoleInput = new ConsoleInput();
 
 
     @Override
     public String getResult() {
-        consoleInput.runObject();
+        try {
+            consoleInput.selectObject();
+        }catch (ValidationException validationException){
+            System.out.println(validationException.getMessage());
+        }
         return "Ввод данных в коллекцию выполнен";
     }
 }

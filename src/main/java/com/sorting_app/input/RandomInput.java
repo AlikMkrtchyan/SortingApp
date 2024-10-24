@@ -16,26 +16,23 @@ public class RandomInput {
     private final List<Book> loadBookList = new ArrayList<>();
     private final List<Car> loadCarList = new ArrayList<>();
     private final List<RootVegetable> loadRootVegetableList = new ArrayList<>();
-
     private String line;
 
-    final String FILE_PATH_BOOK = "src\\main\\resources\\KeepBook.csv";
-    final String FILE_PATH_CAR = "src\\main\\resources\\KeepCar.csv";
-    final String FILE_PATH_ROOT_VEGETABLE = "src\\main\\resources\\KeepRootVegetable.csv";
-
+    static final String FILE_PATH_BOOK = "src\\main\\resources\\KeepBook.csv";
+    static final String FILE_PATH_CAR = "src\\main\\resources\\KeepCar.csv";
+    static final String FILE_PATH_ROOT_VEGETABLE = "src\\main\\resources\\KeepRootVegetable.csv";
 
     DataObject dataObject = new DataObject();
-
 
     public void selectRandomObject() throws ValidationException {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Выбери тип для рандомного заполнения:\n" +
                     "1 - car, 2 - book, 3 - root vegetable");
-            int choosse = scanner.nextInt();
+            int choose = scanner.nextInt();
             System.out.println("Введите количество создаваемых объектов");
             int count = scanner.nextInt();
-            switch (choosse) {
+            switch (choose) {
                 case 1: {
                     loadCarCSV();
                     generateCarList(count);
@@ -54,6 +51,8 @@ public class RandomInput {
                 default:
                     System.out.println("Неверный ввод, введите цифру от 1 до 3");
             }
+        } catch (InputMismatchException e) {
+            throw new ValidationException("Неверный ввод, введите цифры от 1 до 3");
         } catch (Exception e) {
             throw new ValidationException("Проверьте файл на соответствие");
         }
@@ -89,11 +88,11 @@ public class RandomInput {
                 String[] values = line.split(",");
                 if (values.length == 3) {
                     String name = values[0].trim();
-                    String autor = values[1].trim();
+                    String author = values[1].trim();
                     int pages = Integer.parseInt(values[2].trim());
                     loadBookList.add(new Book.BookBuilder()
                             .setBook(name)
-                            .setAuthor(autor)
+                            .setAuthor(author)
                             .setPages(pages)
                             .build());
                 }
@@ -124,7 +123,6 @@ public class RandomInput {
         }
     }
 
-
     public void generateCarList(int count) throws ValidationException {
         try {
             Random random = new Random();
@@ -138,7 +136,6 @@ public class RandomInput {
             throw new ValidationException("Генерация автомобилей не возможна, проверьте файл на соответствие");
         }
     }
-
 
     public void generateBookList(int count) throws ValidationException {
         try {
