@@ -1,7 +1,5 @@
 package com.sorting_app.ExecutionCycle;
 
-import com.sorting_app.Car;
-import com.sorting_app.Utils.CollectionAPI;
 import com.sorting_app.Utils.Printer;
 
 import java.util.List;
@@ -55,12 +53,12 @@ public class ExecutionCycle {
     }
 
     private static void fillCollection() {
-        typeOfCollection = CollectionAPI.choiceOfTypeCollection();
-        lengthOfCollection = CollectionAPI.setLengthOfCollection();
-        // System.out.println(lengthOfCollection);
-        collectionList = CollectionAPI.initCollection(typeOfCollection, lengthOfCollection);
-        CollectionAPI.addElementsInCollectionFromManually(collectionList, typeOfCollection, lengthOfCollection);
-        //writeSortedCollectionInFile();
+//        typeOfCollection = CollectionAPI.choiceOfTypeCollection();
+//        lengthOfCollection = CollectionAPI.setLengthOfCollection();
+//        // System.out.println(lengthOfCollection);
+//        collectionList = CollectionAPI.initCollection(typeOfCollection, lengthOfCollection);
+//        CollectionAPI.addElementsInCollectionFromManually(collectionList, typeOfCollection, lengthOfCollection);
+//        //writeSortedCollectionInFile();
     }
 
     public static void findElement() {
