@@ -2,14 +2,14 @@ package com.sorting_app;
 
 import com.sorting_app.handler.ValidationException;
 import com.sorting_app.input.RandomInput;
-import com.sorting_app.strategy.InputAddObject;
+import com.sorting_app.strategy.InputConsole;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        InputAddObject inputAddObject = new InputAddObject();
+        InputConsole inputAddObject = new InputConsole();
         RandomInput randomInput = new RandomInput();
 
         while (true) {

@@ -3,7 +3,7 @@ package com.sorting_app.strategy;
 import com.sorting_app.handler.ValidationException;
 import com.sorting_app.input.ConsoleInput;
 
-public class InputAddObject implements IStrategy{
+public class InputConsole implements IStrategy{
 
     ConsoleInput consoleInput = new ConsoleInput();
 
