@@ -59,6 +59,6 @@ public class InputRandomStrategy implements IStrategy{
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        return "Рандомный ввод данных в коллекцию выполнен";
+        return "<<<Выборочное добавление данных в коллекцию выполнено>>>";
     }
 }

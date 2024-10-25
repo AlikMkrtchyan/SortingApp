@@ -53,6 +53,6 @@ public class InputConsoleStrategy implements IStrategy {
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
-        return "Ввод данных в коллекцию выполнен";
+        return "<<<Добавление данных в коллекцию в ручном режиме выполнен>>>".toUpperCase();
     }
 }

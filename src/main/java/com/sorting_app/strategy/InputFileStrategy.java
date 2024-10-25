@@ -55,7 +55,6 @@ public class InputFileStrategy implements IStrategy{
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-
-        return "";
+        return "<<<Добавление данных в коллекцию из файла выполнен>>>".toUpperCase();
     }
 }
