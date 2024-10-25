@@ -14,9 +14,9 @@ public class InputConsoleStrategy implements IStrategy {
         this.dataObject = dataObject;
     }
 
-    ConsoleInput consoleInput = new ConsoleInput(dataObject);
 
     private void selectObject() throws ValidationException {
+        ConsoleInput consoleInput = new ConsoleInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Выбери тип для заполнения:\n" +

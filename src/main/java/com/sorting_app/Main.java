@@ -28,10 +28,16 @@ public class Main {
 
 
         while (true) {
+
+
+
                 inputConsoleStrategy.getResult();
                 inputRandomStrategy.getResult();
                 inputFileStrategy.getResult();
+
                 printObjectStrategy.getResult();
+        
+
         }
     }
 }

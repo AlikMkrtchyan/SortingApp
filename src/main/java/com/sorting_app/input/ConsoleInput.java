@@ -16,6 +16,10 @@ public class ConsoleInput {
         this.dataObject = dataObject;
     }
 
+    public DataObject getDataObject() {
+        return dataObject;
+    }
+
     public void inputCar() throws ValidationException {
         try {
             Scanner scanner = new Scanner(System.in);
