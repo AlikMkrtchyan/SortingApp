@@ -3,7 +3,7 @@ package com.sorting_app.strategy;
 import com.sorting_app.handler.ValidationException;
 import com.sorting_app.input.RandomInput;
 
-public class InputRandom implements IStrategy{
+public class InputRandomStrategy implements IStrategy{
 
     RandomInput randomInput;
 

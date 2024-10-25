@@ -5,6 +5,7 @@ import com.sorting_app.handler.ValidationException;
 import com.sorting_app.input.ConsoleInput;
 import com.sorting_app.input.RandomInput;
 import com.sorting_app.input.ReadFileInput;
+import com.sorting_app.strategy.InputConsoleStrategy;
 
 
 import java.io.IOException;
@@ -14,7 +15,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         DataObject dataObject = new DataObject();
-        ConsoleInput consoleInput = new ConsoleInput(dataObject);
+
+        InputConsoleStrategy inputConsoleStrategy = new InputConsoleStrategy(dataObject);
+
         RandomInput randomInput = new RandomInput(dataObject);
         ReadFileInput readFileInput = new ReadFileInput(dataObject);
         //   DataObject dataObject = new DataObject();
@@ -22,7 +25,7 @@ public class Main {
 
         while (true) {
             try {
-                consoleInput.selectObject();
+
                  randomInput.selectRandomObject();
                readFileInput.selectFileRead();
                 dataObject.printCars();

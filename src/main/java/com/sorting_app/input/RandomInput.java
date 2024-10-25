@@ -25,40 +25,6 @@ public class RandomInput {
 
     public RandomInput(DataObject dataObject){this.dataObject = dataObject;}
 
-    public void selectRandomObject() throws ValidationException {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Выбери тип для рандомного заполнения:\n" +
-                    "1 - car, 2 - book, 3 - root vegetable");
-            int choose = scanner.nextInt();
-            System.out.println("Введите количество создаваемых объектов");
-            int count = scanner.nextInt();
-            switch (choose) {
-                case 1: {
-                    loadCarCSV();
-                    generateCarList(count);
-                    break;
-                }
-                case 2: {
-                    loadBooksCSV();
-                    generateBookList(count);
-                    break;
-                }
-                case 3: {
-                    loadRootVegetableCSV();
-                    generateRootVegetables(count);
-                    break;
-                }
-                default:
-                    System.out.println("Неверный ввод, введите цифру от 1 до 3");
-            }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифры от 1 до 3");
-        } catch (Exception e) {
-            throw new ValidationException("Проверьте файл на соответствие");
-        }
-    }
-
     public void loadCarCSV() throws ValidationException {
         File file = new File(FILE_PATH_CAR);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {

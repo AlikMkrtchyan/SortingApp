@@ -16,36 +16,6 @@ public class ConsoleInput {
         this.dataObject = dataObject;
     }
 
-    public void selectObject() throws ValidationException {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Выбери тип для заполнения:\n" +
-                    "1 - car, 2 - book, 3 - root vegetable");
-            int choose = scanner.nextInt();
-            System.out.println("Введите количество создаваемых объектов");
-            int count = scanner.nextInt();
-            for (int i = 1; i < count + 1; i++) {
-                System.out.println("Создаваемый объект №" + i);
-                switch (choose) {
-                    case 1:
-                        inputCar();
-                        break;
-                    case 2:
-                        inputBook();
-                        break;
-                    case 3:
-                        inputRootVegetable();
-                        break;
-                    default:
-                        System.out.println("Неверный ввод, введите цифру от 1 до 3");
-                        break;
-                }
-            }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Введен неверный тип данных");
-        }
-    }
-
     public void inputCar() throws ValidationException {
         try {
             Scanner scanner = new Scanner(System.in);
@@ -120,5 +90,4 @@ public class ConsoleInput {
             throw new ValidationException("Введен неверный тип данных");
         }
     }
-
 }

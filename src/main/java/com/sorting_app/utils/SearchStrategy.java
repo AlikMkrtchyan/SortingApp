@@ -19,8 +19,8 @@ public class SearchStrategy {
 
     public List<Book> findBooks() {
         List<Book> result = new ArrayList<>();
-        if (dataObject.books != null) {
-            for (Book book : dataObject.books) {
+        if (dataObject.getBooks() != null) {
+            for (Book book : dataObject.getBooks()) {
                 String title = book.getBook();
                 String author = book.getAuthor();
 
@@ -36,8 +36,8 @@ public class SearchStrategy {
 
     public List<Car> findCars() {
         List<Car> result = new ArrayList<>();
-        if (dataObject.cars != null) {
-            for (Car car : dataObject.cars) {
+        if (dataObject.getCars() != null) {
+            for (Car car : dataObject.getCars()) {
                 String model = car.getModel();
                 Integer year = car.getYear();
 
@@ -53,8 +53,8 @@ public class SearchStrategy {
 
     public List<RootVegetable> findRootVegetables() {
         List<RootVegetable> result = new ArrayList<>();
-        if (dataObject.rootVegetables != null) {
-            for (RootVegetable rootVegetable : dataObject.rootVegetables) {
+        if (dataObject.getRootVegetables() != null) {
+            for (RootVegetable rootVegetable : dataObject.getRootVegetables()) {
                 String type = rootVegetable.getType();
                 Integer weight = rootVegetable.getWeight();
                 String color = rootVegetable.getColor();
