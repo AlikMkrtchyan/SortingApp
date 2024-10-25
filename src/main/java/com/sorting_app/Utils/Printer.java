@@ -1,6 +1,10 @@
 package com.sorting_app.Utils;
-
-public class Printer {
+public final class Printer {
+    private Printer() {
+        // Подавляет появление конструктора по умолчанию, а заодно
+        // и создание экземпляров класса
+        throw new AssertionError();
+    }
     public static void printHelp() {
         System.out.println();
         System.out.println("Возможные команды: ");
