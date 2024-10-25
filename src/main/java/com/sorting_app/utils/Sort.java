@@ -26,8 +26,8 @@ public class Sort implements IStrategy {
     }
 
     @Override
-    public Objects getResult(List<Objects> obj) {
+    public String getResult() {
         this.sort();
-        return null;
+        return "Коллекция успешно отсортирована.";
     }
 }
