@@ -14,7 +14,7 @@ public class InputFileStrategy implements IStrategy{
         this.dataObject = dataObject;
     }
 
-    public void selectFileRead() throws ValidationException {
+    private void selectFileRead() throws ValidationException {
         ReadFileInput readFileInput = new ReadFileInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
