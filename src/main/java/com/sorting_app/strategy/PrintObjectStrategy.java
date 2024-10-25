@@ -3,7 +3,6 @@ package com.sorting_app.strategy;
 import com.sorting_app.data.DataObject;
 import com.sorting_app.handler.ValidationException;
 
-import java.nio.file.Files;
 import java.util.Scanner;
 
 public class PrintObjectStrategy implements IStrategy {
