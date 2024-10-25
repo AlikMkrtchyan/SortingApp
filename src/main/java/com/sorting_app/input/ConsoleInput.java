@@ -118,7 +118,6 @@ public class ConsoleInput {
         }
     }
 
-    //методы вывода данных Объектов
     public void printCars() {
         if (dataObject.getCars().isEmpty()) {
             System.out.println("Нет машин в списке");

@@ -34,17 +34,17 @@ public class RandomInput {
             int count = scanner.nextInt();
             switch (choose) {
                 case 1: {
-                    loadCarCSV(loadCarList, count);
+                    loadCarCSV();
                     generateCarList(count);
                     break;
                 }
                 case 2: {
-                    loadBooksCSV(loadBookList);
+                    loadBooksCSV();
                     generateBookList(count);
                     break;
                 }
                 case 3: {
-                    loadRootVegetableCSV(loadRootVegetableList);
+                    loadRootVegetableCSV();
                     generateRootVegetables(count);
                     break;
                 }
@@ -58,14 +58,12 @@ public class RandomInput {
         }
     }
 
-    public void loadCarCSV(List<Car> loadCarList, int count) throws ValidationException {
+    public void loadCarCSV() throws ValidationException {
         File file = new File(FILE_PATH_CAR);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             //храним строку из файла
-           for(int i = 0; i < count; i++){
-               line = reader.readLine();
-                //разбиваем строку файла на отдельные значения
-                //строка разбивается на массив
+           while (reader.readLine() != null){
+                line = reader.readLine();
                 String[] values = line.split(",");
                 if (values.length == 3) {
                     String model = values[0].trim();
@@ -82,10 +80,11 @@ public class RandomInput {
         }
     }
 
-    public void loadBooksCSV(List<Book> loadBookList) throws ValidationException {
+    public void loadBooksCSV() throws ValidationException {
         File file = new File(FILE_PATH_BOOK);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            while ((line = reader.readLine()) != null) {
+            while (reader.readLine() != null){
+                line = reader.readLine();
                 String[] values = line.split(",");
                 if (values.length == 3) {
                     String name = values[0].trim();
@@ -103,10 +102,11 @@ public class RandomInput {
         }
     }
 
-    public void loadRootVegetableCSV(List<RootVegetable> loadRootVegetableList) throws ValidationException {
+    public void loadRootVegetableCSV() throws ValidationException {
         File file = new File(FILE_PATH_ROOT_VEGETABLE);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            while ((line = reader.readLine()) != null) {
+           while (reader.readLine() != null){
+                line = reader.readLine();
                 String[] values = line.split(",");
                 if (values.length == 3) {
                     String type = values[0].trim();
@@ -127,11 +127,11 @@ public class RandomInput {
     public void generateCarList(int count) throws ValidationException {
         try {
             Random random = new Random();
-            dataObject.getCars().clear();
+       //     dataObject.getCars().clear();
             for (int i = 0; i < count; i++) {
                 int randomIndex = random.nextInt(loadCarList.size());
                 Car randomeCar = loadCarList.get(randomIndex);
-                dataObject.getCars().add(randomeCar);
+                dataObject.addCar(randomeCar);
             }
         } catch (IllegalArgumentException e) {
             throw new ValidationException("Генерация автомобилей не возможна, проверьте файл на соответствие");
@@ -145,7 +145,7 @@ public class RandomInput {
             for (int i = 0; i < count; i++) {
                 int randomIndex = random.nextInt(loadBookList.size());
                 Book randomeBook = loadBookList.get(randomIndex);
-                dataObject.getBooks().add(randomeBook);
+                dataObject.addBook(randomeBook);
             }
         } catch (IllegalArgumentException e) {
             throw new ValidationException("Генерация Книг не возможна, проверьте файл на соответствие");
@@ -159,7 +159,7 @@ public class RandomInput {
             for (int i = 0; i < count; i++) {
                 int randomIndex = random.nextInt(loadRootVegetableList.size());
                 RootVegetable randomeRootVegetable = loadRootVegetableList.get(randomIndex);
-                dataObject.getRootVegetables().add(randomeRootVegetable);
+                dataObject.addRootVegetable(randomeRootVegetable);
             }
         } catch (IllegalArgumentException e) {
             throw new ValidationException("Генерация корнеплодов не возможна, проверьте файл на соответствие");

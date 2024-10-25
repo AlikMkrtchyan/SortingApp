@@ -13,25 +13,16 @@ public class DataObject {
     private final List<Car> cars;
     private final List<RootVegetable> rootVegetables;
 
-    public DataObject(List<Book> books, List<Car> cars, List<RootVegetable> rootVegetables) {
-        this.books = books;
-        this.cars = cars;
-        this.rootVegetables = rootVegetables;
-    }
-
     public DataObject() {
         this.books = new ArrayList<>();
         this.cars = new ArrayList<>();
         this.rootVegetables = new ArrayList<>();
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
 
-    public List<Car> getCars() {
-        return cars;
-    }
+    public List<Book> getBooks() {return books;}
+
+    public List<Car> getCars() {return cars;}
 
     public List<RootVegetable> getRootVegetables() {
         return rootVegetables;

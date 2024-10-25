@@ -27,7 +27,7 @@ public class WriterCSV {
 
         } catch (IOException e) {
             System.out.println("Произошла ошибка при записи автомобилей в файл");
-            e.printStackTrace();
+           // e.printStackTrace();
         }
     }
 
@@ -46,7 +46,7 @@ public class WriterCSV {
 
         } catch (IOException e) {
             System.out.println("Произошла ошибка при записи автомобилей в файл");
-            e.printStackTrace();
+           // e.printStackTrace();
         }
     }
 
@@ -65,7 +65,7 @@ public class WriterCSV {
 
         } catch (IOException e) {
             System.out.println("Произошла ошибка при записи автомобилей в файл");
-            e.printStackTrace();
+           // e.printStackTrace();
         }
     }
 }
