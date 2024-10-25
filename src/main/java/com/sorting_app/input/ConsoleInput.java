@@ -9,9 +9,12 @@ import com.sorting_app.model.RootVegetable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class ConsoleInput {
-    DataObject dataObject = new DataObject();
+    private final DataObject dataObject;
+
+    public ConsoleInput(DataObject dataObject) {
+        this.dataObject = dataObject;
+    }
 
     public void selectObject() throws ValidationException {
         try {
@@ -21,8 +24,8 @@ public class ConsoleInput {
             int choose = scanner.nextInt();
             System.out.println("Введите количество создаваемых объектов");
             int count = scanner.nextInt();
-            for (int i = 1; i < count+1; i++){
-                System.out.println("Создаваемый объект №"+i);
+            for (int i = 1; i < count + 1; i++) {
+                System.out.println("Создаваемый объект №" + i);
                 switch (choose) {
                     case 1:
                         inputCar();
@@ -59,7 +62,7 @@ public class ConsoleInput {
                     .setPower(power)
                     .setYear(year)
                     .build();
-            dataObject.addCar(car);
+            dataObject.getCars().add(car);
         } catch (InputMismatchException exception) {
             throw new ValidationException("Введен неверный тип данных");
         }
@@ -118,33 +121,4 @@ public class ConsoleInput {
         }
     }
 
-    public void printCars() {
-        if (dataObject.getCars().isEmpty()) {
-            System.out.println("Нет машин в списке");
-        } else {
-            for (Car car : dataObject.getCars()) {
-                System.out.println(car);
-            }
-        }
-    }
-
-    public void printBooks() {
-        if (dataObject.getBooks().isEmpty()) {
-            System.out.println("Нет книг в списке");
-        } else {
-            for (Book book : dataObject.getBooks()) {
-                System.out.println(book);
-            }
-        }
-    }
-
-    public void printRootVegetable() {
-        if (dataObject.getRootVegetables().isEmpty()) {
-            System.out.println("Нет корнеплода в списке");
-        } else {
-            for (RootVegetable rootVegetable : dataObject.getRootVegetables()) {
-                System.out.println(rootVegetable);
-            }
-        }
-    }
 }

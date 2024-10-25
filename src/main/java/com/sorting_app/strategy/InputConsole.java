@@ -5,7 +5,7 @@ import com.sorting_app.input.ConsoleInput;
 
 public class InputConsole implements IStrategy{
 
-    ConsoleInput consoleInput = new ConsoleInput();
+    ConsoleInput consoleInput;
 
 
     @Override

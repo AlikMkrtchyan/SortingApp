@@ -39,4 +39,35 @@ public class DataObject {
     public void addRootVegetable(RootVegetable rootVegetable) {
         rootVegetables.add(rootVegetable);
     }
+
+
+    public void printCars() {
+        if (getCars().isEmpty()) {
+            System.out.println("Нет машин в списке");
+        } else {
+            for (Car car : getCars()) {
+                System.out.println(car);
+            }
+        }
+    }
+
+    public void printBooks() {
+        if (getBooks().isEmpty()) {
+            System.out.println("Нет книг в списке");
+        } else {
+            for (Book book : getBooks()) {
+                System.out.println(book);
+            }
+        }
+    }
+
+    public void printRootVegetable() {
+        if (getRootVegetables().isEmpty()) {
+            System.out.println("Нет корнеплода в списке");
+        } else {
+            for (RootVegetable rootVegetable : getRootVegetables()) {
+                System.out.println(rootVegetable);
+            }
+        }
+    }
 }

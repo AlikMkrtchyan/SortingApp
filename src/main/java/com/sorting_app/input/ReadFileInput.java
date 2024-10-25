@@ -11,12 +11,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class ReadFileInput {
-    RandomInput randomInput = new RandomInput();
-    DataObject dataObject = new DataObject();
+    private final DataObject dataObject;
+
+    public ReadFileInput(DataObject dataObject){this.dataObject = dataObject;}
 
     public void selectFileRead() throws ValidationException {
         try {
@@ -97,7 +97,6 @@ public class ReadFileInput {
         }
     }
 
-
     public void loadRootVegetableCSV(int count) throws ValidationException {
         File file = new File(RandomInput.FILE_PATH_ROOT_VEGETABLE);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -120,33 +119,5 @@ public class ReadFileInput {
             throw new ValidationException("Проверьте файл на соответствие");
         }
     }
-    public void printCarsFileRead() {
-        if (dataObject.getCars().isEmpty()) {
-            System.out.println("Нет машин в списке");
-        } else {
-            for (Car car : dataObject.getCars()) {
-                System.out.println(car);
-            }
-        }
-    }
 
-    public void printBooks() {
-        if (dataObject.getBooks().isEmpty()) {
-            System.out.println("Нет книг в списке");
-        } else {
-            for (Book book : dataObject.getBooks()) {
-                System.out.println(book);
-            }
-        }
-    }
-
-    public void printRootVegetable() {
-        if (dataObject.getRootVegetables().isEmpty()) {
-            System.out.println("Нет корнеплода в списке");
-        } else {
-            for (RootVegetable rootVegetable : dataObject.getRootVegetables()) {
-                System.out.println(rootVegetable);
-            }
-        }
-    }
 }

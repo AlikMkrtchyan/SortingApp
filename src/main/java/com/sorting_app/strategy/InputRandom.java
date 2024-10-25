@@ -5,7 +5,7 @@ import com.sorting_app.input.RandomInput;
 
 public class InputRandom implements IStrategy{
 
-    RandomInput randomInput = new RandomInput();
+    RandomInput randomInput;
 
 
     @Override

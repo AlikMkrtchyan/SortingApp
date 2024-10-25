@@ -10,23 +10,25 @@ import com.sorting_app.input.ReadFileInput;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
 
-        ConsoleInput consoleInput = new ConsoleInput();
-        RandomInput randomInput = new RandomInput();
-        ReadFileInput readFileInput = new ReadFileInput();
+
+    public static void main(String[] args) throws IOException {
         DataObject dataObject = new DataObject();
+        ConsoleInput consoleInput = new ConsoleInput(dataObject);
+        RandomInput randomInput = new RandomInput(dataObject);
+        ReadFileInput readFileInput = new ReadFileInput(dataObject);
+        //   DataObject dataObject = new DataObject();
+
 
         while (true) {
             try {
-//                randomInput.selectRandomObject();
-//                randomInput.printCarList();
-//                randomInput.printBookList();
-//                randomInput.printRootVegetables();
-                readFileInput.selectFileRead();
-                readFileInput.printCarsFileRead();
-                readFileInput.printBooks();
-                readFileInput.printRootVegetable();
+                consoleInput.selectObject();
+                 randomInput.selectRandomObject();
+               readFileInput.selectFileRead();
+                dataObject.printCars();
+                dataObject.printBooks();
+                dataObject.printRootVegetable();
+
 
             } catch (ValidationException validationException) {
                 System.out.println(validationException.getMessage());

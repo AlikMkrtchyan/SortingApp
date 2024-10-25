@@ -17,12 +17,13 @@ public class RandomInput {
     private final List<Car> loadCarList = new ArrayList<>();
     private final List<RootVegetable> loadRootVegetableList = new ArrayList<>();
     private String line;
-
+    DataObject dataObject;
     static final String FILE_PATH_BOOK = "src\\main\\resources\\KeepBook.csv";
     static final String FILE_PATH_CAR = "src\\main\\resources\\KeepCar.csv";
     static final String FILE_PATH_ROOT_VEGETABLE = "src\\main\\resources\\KeepRootVegetable.csv";
 
-    DataObject dataObject = new DataObject();
+
+    public RandomInput(DataObject dataObject){this.dataObject = dataObject;}
 
     public void selectRandomObject() throws ValidationException {
         try {
@@ -61,7 +62,6 @@ public class RandomInput {
     public void loadCarCSV() throws ValidationException {
         File file = new File(FILE_PATH_CAR);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            //храним строку из файла
            while (reader.readLine() != null){
                 line = reader.readLine();
                 String[] values = line.split(",");
@@ -127,7 +127,6 @@ public class RandomInput {
     public void generateCarList(int count) throws ValidationException {
         try {
             Random random = new Random();
-       //     dataObject.getCars().clear();
             for (int i = 0; i < count; i++) {
                 int randomIndex = random.nextInt(loadCarList.size());
                 Car randomeCar = loadCarList.get(randomIndex);
@@ -141,7 +140,6 @@ public class RandomInput {
     public void generateBookList(int count) throws ValidationException {
         try {
             Random random = new Random();
-            dataObject.getBooks().clear();
             for (int i = 0; i < count; i++) {
                 int randomIndex = random.nextInt(loadBookList.size());
                 Book randomeBook = loadBookList.get(randomIndex);
@@ -155,7 +153,6 @@ public class RandomInput {
     public void generateRootVegetables(int count) throws ValidationException {
         try {
             Random random = new Random();
-            dataObject.getRootVegetables().clear();
             for (int i = 0; i < count; i++) {
                 int randomIndex = random.nextInt(loadRootVegetableList.size());
                 RootVegetable randomeRootVegetable = loadRootVegetableList.get(randomIndex);
@@ -166,36 +163,4 @@ public class RandomInput {
         }
     }
 
-    public void printCarList() {
-        if (dataObject.getCars().isEmpty()) {
-            System.out.println("Список автомобилей пуст");
-        } else {
-            System.out.println("Список автомобилей:");
-            for (int i = 0; i < dataObject.getCars().size(); i++) {
-                System.out.println(dataObject.getCars().get(i));
-            }
-        }
-    }
-
-    public void printBookList() {
-        if (dataObject.getBooks().isEmpty()) {
-            System.out.println("Список книг  пуст");
-        } else {
-            System.out.println("Список книг:");
-            for (int i = 0; i < dataObject.getBooks().size(); i++) {
-                System.out.println(dataObject.getBooks().get(i));
-            }
-        }
-    }
-
-    public void printRootVegetables() {
-        if (dataObject.getRootVegetables().isEmpty()) {
-            System.out.println("Список корнеплодов  пуст");
-        } else {
-            System.out.println("Список корнеплодов:");
-            for (int i = 0; i < dataObject.getRootVegetables().size(); i++) {
-                System.out.println(dataObject.getRootVegetables().get(i));
-            }
-        }
-    }
 }
