@@ -3,21 +3,16 @@ package com.sorting_app.ExecutionCycle;
 import com.sorting_app.Utils.Printer;
 
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class ExecutionCycle {
-    private static String typeOfCollection = "";
-    private static int lengthOfCollection;
-    /// длина или размер?
-    private static List collectionList;
     private static final Scanner scanner = new Scanner(System.in);
     private static int command;
 
-    public static void executionCycle() {
-
+    public static void executionCycle(DataObject dataObject) {
         boolean isExit = false;
 
+        Context context = new Context(dataObject);
         while (!isExit) {
             Printer.printHelp();
             try {
@@ -28,9 +23,21 @@ public class ExecutionCycle {
             }
             switch (command) {
                 case 1: {
-                    fillCollection();
-                    System.out.println();
-                    System.out.println("вывод коллекции");
+
+//                    switch (command){
+//                        case 1:{
+//                            context.setStrategy(new InputRandomStrategy(dataObject));
+//                            context.commandSelected();
+//                        }
+//                        case 2:{
+//                            context.setStrategy(new InputConsoleStrategy());
+//                            context.commandSelected();
+//                        }
+//                        case 3:{
+//                            context.setStrategy(new InputFileStrategy());
+//                            context.commandSelected();
+//                        }
+
                     break;
                 }
                 case 2: {
@@ -63,15 +70,11 @@ public class ExecutionCycle {
         System.out.println("\nПрограмма завершена");
     }
 
-    private static void fillCollection() {
-//        typeOfCollection = CollectionAPI.choiceOfTypeCollection();
-//        lengthOfCollection = CollectionAPI.setLengthOfCollection();
-//        // System.out.println(lengthOfCollection);
-//        collectionList = CollectionAPI.initCollection(typeOfCollection, lengthOfCollection);
-//        CollectionAPI.addElementsInCollectionFromManually(collectionList, typeOfCollection, lengthOfCollection);
-//        //writeSortedCollectionInFile();
+
+    public static void sortCollection() {
+
     }
-    public static void sortCollection(){}
+
     public static void findElement() {
         boolean isFound = false;
 
