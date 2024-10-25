@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static com.sorting_app.utils.ConstUtil.*;
+
 public class ReadFileInput {
     private final DataObject dataObject;
 
@@ -50,7 +52,7 @@ public class ReadFileInput {
     }
 
     public void loadBooksCSV(int count) throws ValidationException {
-        File file = new File(RandomInput.FILE_PATH_BOOK);
+        File file = new File(FILE_PATH_BOOK);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             for(int i = 0; i < count; i++){
@@ -73,7 +75,7 @@ public class ReadFileInput {
     }
 
     public void loadCarCSV(int count) throws ValidationException {
-        File file = new File(RandomInput.FILE_PATH_CAR);
+        File file = new File(FILE_PATH_CAR);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             //храним строку из файла
@@ -98,7 +100,7 @@ public class ReadFileInput {
     }
 
     public void loadRootVegetableCSV(int count) throws ValidationException {
-        File file = new File(RandomInput.FILE_PATH_ROOT_VEGETABLE);
+        File file = new File(FILE_PATH_ROOT_VEGETABLE);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             for(int i = 0; i < count; i++){
                 String line;

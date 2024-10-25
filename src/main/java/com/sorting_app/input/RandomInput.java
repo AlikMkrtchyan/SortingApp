@@ -12,18 +12,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+import static com.sorting_app.utils.ConstUtil.*;
+
 public class RandomInput {
+
+    DataObject dataObject;
+    public RandomInput(DataObject dataObject){this.dataObject = dataObject;}
+
     private final List<Book> loadBookList = new ArrayList<>();
     private final List<Car> loadCarList = new ArrayList<>();
     private final List<RootVegetable> loadRootVegetableList = new ArrayList<>();
     private String line;
-    DataObject dataObject;
-    static final String FILE_PATH_BOOK = "src\\main\\resources\\KeepBook.csv";
-    static final String FILE_PATH_CAR = "src\\main\\resources\\KeepCar.csv";
-    static final String FILE_PATH_ROOT_VEGETABLE = "src\\main\\resources\\KeepRootVegetable.csv";
-
-
-    public RandomInput(DataObject dataObject){this.dataObject = dataObject;}
 
     public void loadCarCSV() throws ValidationException {
         File file = new File(FILE_PATH_CAR);
