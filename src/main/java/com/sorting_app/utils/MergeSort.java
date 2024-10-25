@@ -34,11 +34,9 @@ public final class MergeSort {
                 list.set(k++, right.get(j++));
             }
         }
-
         while (i < left.size()) {
             list.set(k++, left.get(i++));
         }
-
         while (j < right.size()) {
             list.set(k++, right.get(j++));
         }
