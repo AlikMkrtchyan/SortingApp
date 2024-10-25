@@ -15,13 +15,15 @@ public class InputRandomStrategy implements IStrategy{
         this.dataObject = dataObject;
     }
 
-    RandomInput randomInput = new RandomInput(dataObject);
-
     private void selectRandomObject() throws ValidationException {
+        RandomInput randomInput = new RandomInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Выбери тип для рандомного заполнения:\n" +
-                    "1 - car, 2 - book, 3 - root vegetable");
+            System.out.println("Выберите цифру от 1 до 4 для рандомного заполнения\n" +
+                    "1 - АВТОМОБИЛЬ;  " +
+                    "2 - КНИГИ;  " +
+                    "3 - КОРНЕПЛОД" +
+                    "4 - ЗАПИСЬ ВО ВСЕ ОБЪЕКТЫ");
             int choose = scanner.nextInt();
             System.out.println("Введите количество создаваемых объектов");
             int count = scanner.nextInt();
@@ -41,11 +43,20 @@ public class InputRandomStrategy implements IStrategy{
                     randomInput.generateRootVegetables(count);
                     break;
                 }
+                case 4: {
+                    randomInput.loadCarCSV();
+                    randomInput.generateCarList(count);
+                    randomInput.loadBooksCSV();
+                    randomInput.generateBookList(count);
+                    randomInput.loadRootVegetableCSV();
+                    randomInput.generateRootVegetables(count);
+                    break;
+                }
                 default:
-                    System.out.println("Неверный ввод, введите цифру от 1 до 3");
+                    System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
         } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифры от 1 до 3");
+            throw new ValidationException("Неверный ввод, введите цифры от 1 до 4");
         } catch (Exception e) {
             throw new ValidationException("Проверьте файл на соответствие");
         }
@@ -53,12 +64,12 @@ public class InputRandomStrategy implements IStrategy{
 
 
     @Override
-    public String getResult() {
+    public void getResult() {
         try {
            selectRandomObject();
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        return "<<<Выборочное добавление данных в коллекцию выполнено>>>";
+        System.out.println("<<<Выборочное добавление данных в коллекцию выполнено>>>");
     }
 }

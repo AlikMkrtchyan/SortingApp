@@ -10,8 +10,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 import static com.sorting_app.utils.ConstUtil.*;
 
@@ -20,36 +18,6 @@ public class ReadFileInput {
 
     public ReadFileInput(DataObject dataObject){this.dataObject = dataObject;}
 
-    public void selectFileRead() throws ValidationException {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Выбери тип для заполнения из файла:\n" +
-                    "1 - car, 2 - book, 3 - root vegetable");
-            int choose = scanner.nextInt();
-            System.out.println("Введите количество создаваемых объектов");
-            int count = scanner.nextInt();
-            switch (choose) {
-                case 1: {
-                   loadCarCSV(count);
-                    break;
-                }
-                case 2: {
-                   loadBooksCSV(count);
-                    break;
-                }
-                case 3: {
-                    loadRootVegetableCSV(count);
-                    break;
-                }
-                default:
-                    System.out.println("Неверный ввод, введите цифру от 1 до 3");
-            }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифры от 1 до 3");
-        } catch (Exception e) {
-            throw new ValidationException("Проверьте файл на соответствие");
-        }
-    }
 
     public void loadBooksCSV(int count) throws ValidationException {
         File file = new File(FILE_PATH_BOOK);

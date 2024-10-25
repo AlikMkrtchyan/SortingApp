@@ -14,13 +14,14 @@ public class InputConsoleStrategy implements IStrategy {
         this.dataObject = dataObject;
     }
 
-
     private void selectObject() throws ValidationException {
         ConsoleInput consoleInput = new ConsoleInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Выбери тип для заполнения:\n" +
-                    "1 - car, 2 - book, 3 - root vegetable");
+            System.out.println("Выберите цифру от 1 до 3 для ввода данных\n" +
+                    "1 - АВТОМОБИЛЬ;  " +
+                    "2 - КНИГИ;  " +
+                    "3 - КОРНЕПЛОД");
             int choose = scanner.nextInt();
             System.out.println("Введите количество создаваемых объектов");
             int count = scanner.nextInt();
@@ -47,12 +48,12 @@ public class InputConsoleStrategy implements IStrategy {
     }
 
     @Override
-    public String getResult() {
+    public void getResult() {
         try {
            selectObject();
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
-        return "<<<Добавление данных в коллекцию в ручном режиме выполнен>>>".toUpperCase();
+        System.out.println("<<<Добавление данных в коллекцию в ручном режиме выполнен>>>".toUpperCase());
     }
 }

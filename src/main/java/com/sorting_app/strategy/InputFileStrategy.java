@@ -14,13 +14,15 @@ public class InputFileStrategy implements IStrategy{
         this.dataObject = dataObject;
     }
 
-    ReadFileInput readFileInput = new ReadFileInput(dataObject);
-
     public void selectFileRead() throws ValidationException {
+        ReadFileInput readFileInput = new ReadFileInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Выбери тип для заполнения из файла:\n" +
-                    "1 - car, 2 - book, 3 - root vegetable");
+            System.out.println("Выберите цифру от 1 до 4 для записи данных из файла\n" +
+                    "1 - АВТОМОБИЛЬ;  " +
+                    "2 - КНИГИ;  " +
+                    "3 - КОРНЕПЛОД" +
+                    "4 - ЗАПИСЬ ВО ВСЕ ОБЪЕКТЫ");
             int choose = scanner.nextInt();
             System.out.println("Введите количество создаваемых объектов");
             int count = scanner.nextInt();
@@ -37,24 +39,29 @@ public class InputFileStrategy implements IStrategy{
                     readFileInput.loadRootVegetableCSV(count);
                     break;
                 }
+                case 4: {
+                    readFileInput.loadCarCSV(count);
+                    readFileInput.loadBooksCSV(count);
+                    readFileInput.loadRootVegetableCSV(count);
+                    break;
+                }
                 default:
-                    System.out.println("Неверный ввод, введите цифру от 1 до 3");
+                    System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
         } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифры от 1 до 3");
+            throw new ValidationException("Неверный ввод, введите цифры от 1 до 4");
         } catch (Exception e) {
             throw new ValidationException("Проверьте файл на соответствие");
         }
     }
 
-
     @Override
-    public String getResult() {
+    public void getResult() {
         try {
             selectFileRead();
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        return "<<<Добавление данных в коллекцию из файла выполнен>>>".toUpperCase();
+        System.out.println("<<<Добавление данных в коллекцию из файла выполнен>>>".toUpperCase());
     }
 }

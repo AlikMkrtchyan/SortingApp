@@ -3,6 +3,7 @@ package com.sorting_app.strategy;
 import com.sorting_app.data.DataObject;
 import com.sorting_app.handler.ValidationException;
 
+import java.nio.file.Files;
 import java.util.Scanner;
 
 public class PrintObjectStrategy implements IStrategy {
@@ -15,7 +16,11 @@ public class PrintObjectStrategy implements IStrategy {
     private void selectPrint() throws ValidationException{
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Выберите цифру от 1 до 3 для вывода объекта\n1 - CAR;  2 - BOOK;  3 - ROOT_VEGETABLE");
+            System.out.println("Выберите цифру от 1 до 4 для вывода объекта\n" +
+                    "1 - АВТОМОБИЛЬ;  " +
+                    "2 - КНИГИ;  " +
+                    "3 - КОРНЕПЛОД" +
+                    "4 - ВЫВЕСТИ ВСЕ ОБЪЕКТЫ");
             int choose = scanner.nextInt();
                 switch (choose) {
                     case 1:
@@ -27,8 +32,13 @@ public class PrintObjectStrategy implements IStrategy {
                     case 3:
                         dataObject.printRootVegetable();
                         break;
+                    case 4: {
+                        dataObject.printCars();
+                        dataObject.printBooks();
+                        dataObject.printRootVegetable();
+                    }
                     default:
-                        System.out.println("Неверный ввод, введите цифру от 1 до 3");
+                        System.out.println("Неверный ввод, введите цифру от 1 до 4");
                         break;
             }
         }catch (Exception e){
@@ -37,12 +47,12 @@ public class PrintObjectStrategy implements IStrategy {
     }
 
     @Override
-    public String getResult() {
+    public void getResult() {
         try {
             selectPrint();
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        return "<<<УСПЕШНО ВЫПОЛНЕНО>>>";
+        System.out.println("<<<УСПЕШНО ВЫПОЛНЕНО>>>");
     }
 }

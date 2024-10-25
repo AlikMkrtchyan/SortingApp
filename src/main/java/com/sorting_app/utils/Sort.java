@@ -25,7 +25,7 @@ public class Sort implements IStrategy {
 
 
     @Override
-    public String getResult() {
-        return "";
+    public void getResult() {
+        System.out.println("");
     }
 }
