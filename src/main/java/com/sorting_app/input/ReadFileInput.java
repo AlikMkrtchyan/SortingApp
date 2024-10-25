@@ -78,11 +78,8 @@ public class ReadFileInput {
         File file = new File(FILE_PATH_CAR);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
-            //храним строку из файла
             for(int i = 0; i < count; i++){
                 line = reader.readLine();
-                //разбиваем строку файла на отдельные значения
-                //строка разбивается на массив
                 String[] values = line.split(",");
                 if (values.length == 3) {
                     String model = values[0].trim();

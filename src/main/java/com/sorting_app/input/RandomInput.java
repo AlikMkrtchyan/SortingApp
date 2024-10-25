@@ -24,6 +24,7 @@ public class RandomInput {
     private final List<RootVegetable> loadRootVegetableList = new ArrayList<>();
     private String line;
 
+
     public void loadCarCSV() throws ValidationException {
         File file = new File(FILE_PATH_CAR);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {

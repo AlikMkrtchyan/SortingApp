@@ -2,43 +2,39 @@ package com.sorting_app.strategy;
 
 import com.sorting_app.data.DataObject;
 import com.sorting_app.handler.ValidationException;
-import com.sorting_app.input.RandomInput;
+import com.sorting_app.input.ReadFileInput;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
-public class InputRandomStrategy implements IStrategy{
+public class InputFileStrategy implements IStrategy{
     DataObject dataObject;
 
-    public InputRandomStrategy(DataObject dataObject) {
+    public InputFileStrategy(DataObject dataObject) {
         this.dataObject = dataObject;
     }
 
-    RandomInput randomInput = new RandomInput(dataObject);
+    ReadFileInput readFileInput = new ReadFileInput(dataObject);
 
-    private void selectRandomObject() throws ValidationException {
+    public void selectFileRead() throws ValidationException {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Выбери тип для рандомного заполнения:\n" +
+            System.out.println("Выбери тип для заполнения из файла:\n" +
                     "1 - car, 2 - book, 3 - root vegetable");
             int choose = scanner.nextInt();
             System.out.println("Введите количество создаваемых объектов");
             int count = scanner.nextInt();
             switch (choose) {
                 case 1: {
-                    randomInput.loadCarCSV();
-                    randomInput.generateCarList(count);
+                    readFileInput.loadCarCSV(count);
                     break;
                 }
                 case 2: {
-                    randomInput.loadBooksCSV();
-                    randomInput.generateBookList(count);
+                    readFileInput.loadBooksCSV(count);
                     break;
                 }
                 case 3: {
-                    randomInput.loadRootVegetableCSV();
-                    randomInput.generateRootVegetables(count);
+                    readFileInput.loadRootVegetableCSV(count);
                     break;
                 }
                 default:
@@ -55,10 +51,11 @@ public class InputRandomStrategy implements IStrategy{
     @Override
     public String getResult() {
         try {
-           selectRandomObject();
+            selectFileRead();
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        return "Рандомный ввод данных в коллекцию выполнен";
+
+        return "";
     }
 }

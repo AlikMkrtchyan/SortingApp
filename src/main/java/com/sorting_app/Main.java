@@ -6,6 +6,7 @@ import com.sorting_app.input.ConsoleInput;
 import com.sorting_app.input.RandomInput;
 import com.sorting_app.input.ReadFileInput;
 import com.sorting_app.strategy.InputConsoleStrategy;
+import com.sorting_app.strategy.InputRandomStrategy;
 
 
 import java.io.IOException;
@@ -17,8 +18,9 @@ public class Main {
         DataObject dataObject = new DataObject();
 
         InputConsoleStrategy inputConsoleStrategy = new InputConsoleStrategy(dataObject);
+        InputRandomStrategy inputRandomStrategy = new InputRandomStrategy(dataObject);
 
-        RandomInput randomInput = new RandomInput(dataObject);
+
         ReadFileInput readFileInput = new ReadFileInput(dataObject);
         //   DataObject dataObject = new DataObject();
 
@@ -26,7 +28,7 @@ public class Main {
         while (true) {
             try {
 
-                 randomInput.selectRandomObject();
+
                readFileInput.selectFileRead();
                 dataObject.printCars();
                 dataObject.printBooks();
