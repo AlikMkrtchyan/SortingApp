@@ -32,7 +32,7 @@ public class ConsoleInput {
                     .setPower(power)
                     .setYear(year)
                     .build();
-            dataObject.getCars().add(car);
+            dataObject.addCar(car);
         } catch (InputMismatchException exception) {
             throw new ValidationException("Введен неверный тип данных");
         }
