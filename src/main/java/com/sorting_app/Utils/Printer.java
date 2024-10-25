@@ -15,7 +15,8 @@ public final class Printer {
         // System.out.println("5 - Записать найденные элементы в файл;");
         //
 //        System.out.println("help - Вывод help;");
-        System.out.println("4 - Выход из программы.");
+        System.out.println("4 - Вывод коллекции в консоль;");
+        System.out.println("5 - Выход из программы.");
         System.out.println();
     }
 }

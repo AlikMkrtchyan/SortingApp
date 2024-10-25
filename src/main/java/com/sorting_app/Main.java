@@ -7,7 +7,10 @@ public class Main {
 
         DataObject dataObject = new DataObject();
 
-        ExecutionCycle.executionCycle(dataObject);
+        ExecutionCycle executionCycle = new ExecutionCycle(dataObject);
+
+        executionCycle.run();
+
 
     }
 }
