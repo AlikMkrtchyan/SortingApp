@@ -19,14 +19,11 @@ public class DataObject {
         this.rootVegetables = new ArrayList<>();
     }
 
-
     public List<Book> getBooks() {return books;}
 
     public List<Car> getCars() {return cars;}
 
-    public List<RootVegetable> getRootVegetables() {
-        return rootVegetables;
-    }
+    public List<RootVegetable> getRootVegetables() {return rootVegetables;}
 
     public void addBook(Book book) {
         books.add(book);
@@ -39,7 +36,6 @@ public class DataObject {
     public void addRootVegetable(RootVegetable rootVegetable) {
         rootVegetables.add(rootVegetable);
     }
-
 
     public void printCars() {
         if (getCars().isEmpty()) {
