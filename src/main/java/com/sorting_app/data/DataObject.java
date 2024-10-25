@@ -9,15 +9,9 @@ import java.util.List;
 
 public class DataObject {
 
-    public List<Book> books;
-    public List<Car> cars;
-    public List<RootVegetable> rootVegetables;
-
-    public DataObject(List<Book> books, List<Car> cars, List<RootVegetable> rootVegetables) {
-        this.books = books;
-        this.cars = cars;
-        this.rootVegetables = rootVegetables;
-    }
+    private final List<Book> books;
+    private final List<Car> cars;
+    private final List<RootVegetable> rootVegetables;
 
     public DataObject() {
         this.books = new ArrayList<>();
@@ -25,17 +19,11 @@ public class DataObject {
         this.rootVegetables = new ArrayList<>();
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
+    public List<Book> getBooks() {return books;}
 
-    public List<Car> getCars() {
-        return cars;
-    }
+    public List<Car> getCars() {return cars;}
 
-    public List<RootVegetable> getRootVegetables() {
-        return rootVegetables;
-    }
+    public List<RootVegetable> getRootVegetables() {return rootVegetables;}
 
     public void addBook(Book book) {
         books.add(book);
@@ -49,18 +37,33 @@ public class DataObject {
         rootVegetables.add(rootVegetable);
     }
 
-/*    public void add(Object object) {
-        if (object instanceof Book)
-            add((Book) object);
-        else if (object instanceof Car)
-            add((Car) object);
-        else if (object instanceof RootVegetable)
-            add((RootVegetable) object);
+    public void printCars() {
+        if (getCars().isEmpty()) {
+            System.out.println("Нет машин в списке");
+        } else {
+            for (Car car : getCars()) {
+                System.out.println(car);
+            }
+        }
     }
 
-    public void add(List<Object> list) {
-        list.forEach(this::add);
-    }*/
+    public void printBooks() {
+        if (getBooks().isEmpty()) {
+            System.out.println("Нет книг в списке");
+        } else {
+            for (Book book : getBooks()) {
+                System.out.println(book);
+            }
+        }
+    }
 
-
+    public void printRootVegetable() {
+        if (getRootVegetables().isEmpty()) {
+            System.out.println("Нет корнеплода в списке");
+        } else {
+            for (RootVegetable rootVegetable : getRootVegetables()) {
+                System.out.println(rootVegetable);
+            }
+        }
+    }
 }

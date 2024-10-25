@@ -37,7 +37,7 @@ public class RootVegetable implements Comparable<RootVegetable> {
 
     @Override
     public String toString() {
-        return String.format("Тип корнеплода: %s; Вес: %d; Цвет: %s",
+        return String.format("Корнеплод - Тип корнеплода: %s; Вес: %d; Цвет: %s",
                 type, weight, color);
     }
 
