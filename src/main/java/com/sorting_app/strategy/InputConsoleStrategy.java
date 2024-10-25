@@ -18,7 +18,7 @@ public class InputConsoleStrategy implements IStrategy {
         ConsoleInput consoleInput = new ConsoleInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Выберите цифру от 1 до 3 для ввода данных\n" +
+            System.out.println("\nВыберите цифру от 1 до 3 для ввода данных\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
                     "3 - КОРНЕПЛОД");
@@ -54,6 +54,6 @@ public class InputConsoleStrategy implements IStrategy {
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
-        System.out.println("<<<Добавление данных в коллекцию в ручном режиме выполнен>>>".toUpperCase());
+        System.out.println("\n<<<Добавление данных в коллекцию в ручном режиме выполнен>>>\n".toUpperCase());
     }
 }

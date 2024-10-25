@@ -16,10 +16,10 @@ public class PrintObjectStrategy implements IStrategy {
     private void selectPrint() throws ValidationException{
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Выберите цифру от 1 до 4 для вывода объекта\n" +
+            System.out.println("\nВыберите цифру от 1 до 4 для вывода объекта\n\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
-                    "3 - КОРНЕПЛОД" +
+                    "3 - КОРНЕПЛОД  " +
                     "4 - ВЫВЕСТИ ВСЕ ОБЪЕКТЫ");
             int choose = scanner.nextInt();
                 switch (choose) {
@@ -36,6 +36,7 @@ public class PrintObjectStrategy implements IStrategy {
                         dataObject.printCars();
                         dataObject.printBooks();
                         dataObject.printRootVegetable();
+                        break;
                     }
                     default:
                         System.out.println("Неверный ввод, введите цифру от 1 до 4");
@@ -53,6 +54,6 @@ public class PrintObjectStrategy implements IStrategy {
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        System.out.println("<<<УСПЕШНО ВЫПОЛНЕНО>>>");
+        System.out.println("\n<<<УСПЕШНО ВЫПОЛНЕНО>>>\n");
     }
 }

@@ -19,10 +19,10 @@ public class InputRandomStrategy implements IStrategy{
         RandomInput randomInput = new RandomInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Выберите цифру от 1 до 4 для рандомного заполнения\n" +
+            System.out.println("\nВыберите цифру от 1 до 4 для рандомного заполнения\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
-                    "3 - КОРНЕПЛОД" +
+                    "3 - КОРНЕПЛОД  " +
                     "4 - ЗАПИСЬ ВО ВСЕ ОБЪЕКТЫ");
             int choose = scanner.nextInt();
             System.out.println("Введите количество создаваемых объектов");
@@ -70,6 +70,6 @@ public class InputRandomStrategy implements IStrategy{
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        System.out.println("<<<Выборочное добавление данных в коллекцию выполнено>>>");
+        System.out.println("<<<Выборочное добавление данных в коллекцию выполнено>>>".toUpperCase());
     }
 }

@@ -18,10 +18,10 @@ public class InputFileStrategy implements IStrategy{
         ReadFileInput readFileInput = new ReadFileInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Выберите цифру от 1 до 4 для записи данных из файла\n" +
+            System.out.println("\nВыберите цифру от 1 до 4 для записи данных из файла\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
-                    "3 - КОРНЕПЛОД" +
+                    "3 - КОРНЕПЛОД  " +
                     "4 - ЗАПИСЬ ВО ВСЕ ОБЪЕКТЫ");
             int choose = scanner.nextInt();
             System.out.println("Введите количество создаваемых объектов");
@@ -62,6 +62,6 @@ public class InputFileStrategy implements IStrategy{
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        System.out.println("<<<Добавление данных в коллекцию из файла выполнен>>>".toUpperCase());
+        System.out.println("\n<<<Добавление данных в коллекцию из файла выполнен>>>\n".toUpperCase());
     }
 }
