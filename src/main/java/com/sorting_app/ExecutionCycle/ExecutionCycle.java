@@ -34,14 +34,22 @@ public class ExecutionCycle {
                     break;
                 }
                 case 2: {
+                    sortCollection();
+                    break;
+                }
+                case 3: {
                     findElement();
                     break;
                 }
-//                case "help": {
-//                    Printer.printHelp();
+//                case 4: {
+//                    writeSortedCollectionInFile();
 //                    break;
 //                }
-                case 3: {
+//                case 5: {
+//                    writeFoundElementsInFile();
+//                    break;
+//                }
+                case 4: {
                     isExit = true;
                     break;
                 }
@@ -63,7 +71,7 @@ public class ExecutionCycle {
 //        CollectionAPI.addElementsInCollectionFromManually(collectionList, typeOfCollection, lengthOfCollection);
 //        //writeSortedCollectionInFile();
     }
-
+    public static void sortCollection(){}
     public static void findElement() {
         boolean isFound = false;
 
