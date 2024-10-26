@@ -18,7 +18,7 @@ public class RecordStrategy implements IStrategy {
         Record record = new Record(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("\nВыберите цифру от 1 до 4 для записи объекта в файл\n" +
+            System.out.println("\nВведите цифру от 1 до 4 для записи объекта в файл\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
                     "3 - КОРНЕПЛОД  " +
@@ -26,33 +26,51 @@ public class RecordStrategy implements IStrategy {
             int choose = scanner.nextInt();
             switch (choose) {
                 case 1: {
-                    record.recordCar();
-                    break;
+                    if (!dataObject.getCars().isEmpty()) {
+                        record.recordCar();
+                    } else{
+                        System.out.println("Коллекция машин пуста");
+                    }
+                        break;
                 }
                 case 2: {
-                    record.recordBook();
+                    if(!dataObject.getBooks().isEmpty()){
+                        record.recordBook();
+                    } else {
+                        System.out.println("Коллекция книг пуста");
+                    }
+
                     break;
                 }
                 case 3: {
-                    record.recordRootVegetable();
+                    if(!dataObject.getRootVegetables().isEmpty()){
+                        record.recordRootVegetable();
+                    } else {
+                        System.out.println("Коллекция корнеплодов пуста");
+                    }
                     break;
                 }
                 case 4: {
-                    record.recordCar();
-                    record.recordBook();
-                    record.recordRootVegetable();
+                    if(!dataObject.getBooks().isEmpty() &&
+                            !dataObject.getCars().isEmpty() &&
+                            !dataObject.getRootVegetables().isEmpty()){
+                        record.recordCar();
+                        record.recordBook();
+                        record.recordRootVegetable();
+                    } else {
+                        System.out.println("Проверьте коллекции на наличие данных, возможно одна из коллекций пуста");
+                    }
                     break;
                 }
                 default:
                     System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
         } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифры от 1 до 4");
+            throw new ValidationException("Неверный ввод, введите цифру от 1 до 4");
         } catch (Exception e) {
             throw new ValidationException("Проверьте файл на соответствие");
         }
     }
-
 
     @Override
     public void getResult() {
@@ -61,5 +79,6 @@ public class RecordStrategy implements IStrategy {
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
+        System.out.println("\n<<<Запись успешно выполнена>>>\n".toUpperCase());
     }
 }

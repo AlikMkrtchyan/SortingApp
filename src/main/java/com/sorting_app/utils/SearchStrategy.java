@@ -7,34 +7,97 @@ import com.sorting_app.model.RootVegetable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class SearchStrategy {
     private DataObject dataObject;
-    private String criteria;
 
-    public SearchStrategy(DataObject dataObject, String criteria) {
+    public SearchStrategy(DataObject dataObject) {
         this.dataObject = dataObject;
-        this.criteria = criteria;
     }
-
     public List<Book> findBooks() {
         List<Book> result = new ArrayList<>();
-        if (dataObject.getBooks() != null) {
-            for (Book book : dataObject.getBooks()) {
-                String title = book.getBook();
-                String author = book.getAuthor();
-
-
-                if ((title != null && title.equalsIgnoreCase(criteria)) ||
-                        (author != null && author.equalsIgnoreCase(criteria))) {
-                    result.add(book);
-                }
-            }
+        System.out.println("\nПоиск книг в коллекции\n".toUpperCase());
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введи название книги");
+        String name = scanner.nextLine();
+        System.out.println("Введи автора");
+        String author = scanner.nextLine();
+        System.out.println("Введи кол-во страниц");
+        int pages = scanner.nextInt();
+        if (name.isEmpty()) {
+            name = null;
         }
+        if (author.isEmpty()) {
+            author = null;
+        }
+        Book book = new Book.BookBuilder().setBook(name)
+                .setAuthor(author)
+                .setPages(pages)
+                .build();
+        int count = BinarySearch.binarySearch(dataObject.getBooks(), book);
+        if(count >= 0){result.add(dataObject.getBooks().get(count));}
+        System.out.println(
+                "Всего найдено совпадений: ".toUpperCase() + result.size() + "\n" +
+                result);
         return result;
     }
 
-    public List<Car> findCars() {
+    public List<Car> findСar() {
+        List<Car> result = new ArrayList<>();
+        System.out.println("\nПоиск машин в коллекции\n".toUpperCase());
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введи модель");
+        String model = scanner.nextLine();
+        System.out.println("Введи мощность");
+        int power = scanner.nextInt();
+        System.out.println("Введи год выпуска");
+        int year = scanner.nextInt();
+        if (model.isEmpty()) {
+            model = null;
+        }
+        Car car = new Car.CarBuilder().setModel(model)
+                .setPower(power)
+                .setYear(year)
+                .build();
+        int count = BinarySearch.binarySearch(dataObject.getCars(), car);
+        if(count >= 0){result.add(dataObject.getCars().get(count));}
+        System.out.println(
+                "Всего найдено совпадений: ".toUpperCase() + result.size() + "\n" +
+                        result);
+        return result;
+    }
+
+    public List<RootVegetable> findRootVegetable() {
+        List<RootVegetable> result = new ArrayList<>();
+        System.out.println("\nПоиск корнеплодов в коллекции\n".toUpperCase());
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введи тип");
+        String type = scanner.nextLine();
+        System.out.println("Введи вес");
+        int weight = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Введи цвет");
+        String color = scanner.nextLine();
+        if (type.isEmpty()) {
+            type = null;
+        }
+        if (color.isEmpty()) {
+            color = null;
+        }
+        RootVegetable rootVegetable =
+                new RootVegetable.RootVegetableBuilder().setType(type)
+                        .setWeight(weight)
+                        .setColor(color)
+                        .build();
+        int count = BinarySearch.binarySearch(dataObject.getRootVegetables(), rootVegetable);
+        if(count >= 0) result.add(dataObject.getRootVegetables().get(count));
+        System.out.println(
+                "Всего найдено совпадений: ".toUpperCase() + result.size() + "\n");
+        return result;
+    }
+
+/*    public List<Car> findCars() {
         List<Car> result = new ArrayList<>();
         if (dataObject.getCars() != null) {
             for (Car car : dataObject.getCars()) {
@@ -68,39 +131,6 @@ public class SearchStrategy {
             }
         }
         return result;
-    }
+    }*/
 
-    public String getResult() {
-        StringBuilder resultBuilder = new StringBuilder();
-
-        List<Book> books = findBooks();
-        if (!books.isEmpty()) {
-            resultBuilder.append("Найден(ы) книги:\n");
-            for (Book book : books) {
-                resultBuilder.append(book.toString()).append("\n");
-            }
-        }
-
-        List<Car> cars = findCars();
-        if (!cars.isEmpty()) {
-            resultBuilder.append("Найден(ы) машины:\n");
-            for (Car car : cars) {
-                resultBuilder.append(car.toString()).append("\n");
-            }
-        }
-
-        List<RootVegetable> rootVegetables = findRootVegetables();
-        if (!rootVegetables.isEmpty()) {
-            resultBuilder.append("Найден(ы) корнеплоды:\n");
-            for (RootVegetable rootVegetable : rootVegetables) {
-                resultBuilder.append(rootVegetable.toString()).append("\n");
-            }
-        }
-
-        if (resultBuilder.length() == 0) {
-            return "По заданным критериям ничего не найдено.";
-        }
-
-        return resultBuilder.toString();
-    }
 }

@@ -18,7 +18,7 @@ public class InputConsoleStrategy implements IStrategy {
         ConsoleInput consoleInput = new ConsoleInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("\nВыберите цифру от 1 до 3 для ввода данных\n" +
+            System.out.println("\nВведите цифру от 1 до 3 для ввода данных\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
                     "3 - КОРНЕПЛОД");

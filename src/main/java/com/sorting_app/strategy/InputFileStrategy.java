@@ -18,7 +18,7 @@ public class InputFileStrategy implements IStrategy{
         ReadFileInput readFileInput = new ReadFileInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("\nВыберите цифру от 1 до 4 для записи данных из файла\n" +
+            System.out.println("\nВведите цифру от 1 до 4 для записи данных из файла\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
                     "3 - КОРНЕПЛОД  " +
@@ -49,7 +49,7 @@ public class InputFileStrategy implements IStrategy{
                     System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
         } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифры от 1 до 4");
+            throw new ValidationException("Неверный ввод, введите цифру от 1 до 4");
         } catch (Exception e) {
             throw new ValidationException("Проверьте файл на соответствие");
         }

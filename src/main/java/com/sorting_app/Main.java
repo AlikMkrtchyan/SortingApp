@@ -3,10 +3,8 @@ package com.sorting_app;
 import com.sorting_app.data.DataObject;
 import com.sorting_app.handler.ValidationException;
 import com.sorting_app.input.Record;
-import com.sorting_app.strategy.InputConsoleStrategy;
-import com.sorting_app.strategy.InputFileStrategy;
-import com.sorting_app.strategy.InputRandomStrategy;
-import com.sorting_app.strategy.PrintObjectStrategy;
+import com.sorting_app.strategy.*;
+import com.sorting_app.utils.SearchStrategy;
 
 import java.io.IOException;
 
@@ -20,26 +18,33 @@ public class Main {
         InputRandomStrategy inputRandomStrategy = new InputRandomStrategy(dataObject);
         InputFileStrategy inputFileStrategy = new InputFileStrategy(dataObject);
         PrintObjectStrategy printObjectStrategy = new PrintObjectStrategy(dataObject);
-        Record record = new Record();
+        RecordStrategy record = new RecordStrategy(dataObject);
+        SearchStrategy search = new SearchStrategy(dataObject);
 
         //   DataObject dataObject = new DataObject();
 
 
 
-            try {
+inputFileStrategy.getResult();
+printObjectStrategy.getResult();
+//search.findBooks();
+        //search.findСar();
+search.findRootVegetable();
+//record.getResult();
+/*            try {
             //    inputFileStrategy.getResult();
-               record.recordCar(dataObject);
-                record.clear();
+               //record.getResult();
+            //    record.clear();
              //   inputRandomStrategy.getResult();
 
                // printObjectStrategy.getResult();
 
             } catch (ValidationException validationException) {
-                System.out.println(validationException.getMessage());
+                System.out.println(validationException.getMessage());*/
 
             // inputConsoleStrategy.getResult();
 
 
-        }
+
     }
 }

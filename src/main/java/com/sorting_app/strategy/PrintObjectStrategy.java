@@ -15,7 +15,7 @@ public class PrintObjectStrategy implements IStrategy {
     private void selectPrint() throws ValidationException{
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("\nВыберите цифру от 1 до 4 для вывода объекта\n\n" +
+            System.out.println("\nВведите цифру от 1 до 4 для вывода объекта\n\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
                     "3 - КОРНЕПЛОД  " +
