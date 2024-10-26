@@ -19,7 +19,7 @@ public class BinarySearchStrategy implements IStrategy {
         SearchInputData searchInputData = new SearchInputData(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("\nВведите цифру от 1 до 4 для поиска объектов\n" +
+            System.out.println("\nВведите цифру от 1 до 3 для поиска объектов\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
                     "3 - КОРНЕПЛОД  ");
