@@ -14,7 +14,6 @@ public class BinarySearchStrategy implements IStrategy {
         this.dataObject = dataObject;
     }
 
-
     private void selectBinarySearch() throws ValidationException {
         SearchInputData searchInputData = new SearchInputData(dataObject);
         try {
