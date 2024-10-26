@@ -4,8 +4,12 @@ import com.sorting_app.data.DataObject;
 import com.sorting_app.handler.ValidationException;
 import com.sorting_app.input.Record;
 import com.sorting_app.input.SearchInputData;
+import com.sorting_app.model.Book;
+import com.sorting_app.model.Car;
+import com.sorting_app.model.RootVegetable;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class BinarySearchStrategy implements IStrategy {
@@ -28,13 +32,14 @@ public class BinarySearchStrategy implements IStrategy {
             switch (choose) {
                 case 1: {
                     if (!dataObject.getCars().isEmpty()) {
-                        searchInputData.findСar();
-                        System.out.println("Записать найденные данные в файл?" +
-                                "1 - ДА" +
-                                "2 - НЕТ");
+                        List<Car> cars = searchInputData.findСar();
+                        System.out.println("\nЗаписать найденные данные в файл?\n" +
+                                "1 - ДА   " +
+                                "2 - НЕТ".toUpperCase());
                         int selectCount = scanner.nextInt();
                         if (selectCount == 1) {
-                            record.recordCar(searchInputData.findСar());
+                            record.recordCar(cars);
+                            break;
                         }
                     } else{
                         System.out.println("Коллекция машин пуста");
@@ -43,13 +48,13 @@ public class BinarySearchStrategy implements IStrategy {
                 }
                 case 2: {
                     if(!dataObject.getBooks().isEmpty()){
-                        searchInputData.findBooks();
-                        System.out.println("Записать найденные данные в файл?" +
-                                "1 - ДА" +
-                                "2 - НЕТ");
+                        List<Book> books = searchInputData.findBooks();
+                        System.out.println("Записать найденные данные в файл?\n" +
+                                "1 - ДА   " +
+                                "2 - НЕТ".toUpperCase());
                         int selectCount = scanner.nextInt();
                         if (selectCount == 1) {
-                            record.recordBook(searchInputData.findBooks());
+                            record.recordBook(books);
                         }
                     } else {
                         System.out.println("Коллекция книг пуста");
@@ -58,13 +63,13 @@ public class BinarySearchStrategy implements IStrategy {
                 }
                 case 3: {
                     if(!dataObject.getRootVegetables().isEmpty()){
-                        searchInputData.findRootVegetable();
-                        System.out.println("Записать найденные данные в файл?" +
-                                "1 - ДА" +
-                                "2 - НЕТ");
+                        List<RootVegetable> rootVegetables = searchInputData.findRootVegetable();
+                        System.out.println("Записать найденные данные в файл?\n" +
+                                "1 - ДА    " +
+                                "2 - НЕТ".toUpperCase());
                         int selectCount = scanner.nextInt();
                         if (selectCount == 1) {
-                            record.recordRootVegetable(searchInputData.findRootVegetable());
+                            record.recordRootVegetable(rootVegetables);
                         }
                     } else {
                         System.out.println("Коллекция корнеплодов пуста");
@@ -72,12 +77,12 @@ public class BinarySearchStrategy implements IStrategy {
                     break;
                 }
                 default:
-                    System.out.println("Неверный ввод, введите цифру от 1 до 3");
+                    break;
             }
         } catch (InputMismatchException e) {
             throw new ValidationException("Неверный ввод, введите цифру от 1 до 3");
         } catch (Exception e) {
-            throw new ValidationException("Проверьте коллекцию на соответствие");
+            throw new ValidationException(e.getMessage());
         }
     }
 

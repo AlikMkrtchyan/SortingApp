@@ -40,8 +40,7 @@ public class SearchInputData {
                 result.add(dataObject.getCars().get(count));
             }
             System.out.println(
-                    "Всего найдено совпадений: ".toUpperCase() + result.size() + "\n" +
-                            result);
+                    "Всего найдено совпадений: ".toUpperCase() + result.size());
             return result;
         } catch (InputMismatchException e) {
             throw new ValidationException("Неверный ввод! введите соответствующий тип данных");
@@ -75,8 +74,7 @@ public class SearchInputData {
                 result.add(dataObject.getBooks().get(count));
             }
             System.out.println(
-                    "Всего найдено совпадений: ".toUpperCase() + result.size() + "\n" +
-                            result);
+                    "Всего найдено совпадений: ".toUpperCase() + result.size());
             return result;
         } catch (InputMismatchException e){
             throw new ValidationException("Неверный ввод! введите соответствующий тип данных");
@@ -112,7 +110,7 @@ public class SearchInputData {
                 result.add(dataObject.getRootVegetables().get(count));
             }
             System.out.println(
-                    "Всего найдено совпадений: ".toUpperCase() + result.size() + "\n");
+                    "Всего найдено совпадений: ".toUpperCase() + result.size());
             return result;
         } catch (InputMismatchException e) {
             throw new ValidationException("Неверный ввод! введите соответствующий тип данных");

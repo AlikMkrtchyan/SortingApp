@@ -1,8 +1,6 @@
 package com.sorting_app;
 
 import com.sorting_app.data.DataObject;
-import com.sorting_app.handler.ValidationException;
-import com.sorting_app.input.SortByEven;
 import com.sorting_app.strategy.*;
 
 import java.io.IOException;
@@ -18,15 +16,12 @@ public class Main {
         PrintObjectStrategy printObjectStrategy = new PrintObjectStrategy(dataObject);
         RecordStrategy record = new RecordStrategy(dataObject);
         BinarySearchStrategy search = new BinarySearchStrategy(dataObject);
-        SortByEven rv = new SortByEven(dataObject);
-
+        SortByEvenStrategy sortByEvenStrategy = new SortByEvenStrategy(dataObject);
+        MergeSortStrategy mergeSortStrategy = new MergeSortStrategy(dataObject);
 
         inputFileStrategy.getResult();
-        printObjectStrategy.getResult();
-        try {
-            rv.rootVegetableSortByEven();
-        } catch (ValidationException validationException){
-            System.out.println(validationException.getMessage());
-        }
+        search.getResult();
+
+
     }
 }
