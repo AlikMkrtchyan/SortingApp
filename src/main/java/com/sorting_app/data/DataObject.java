@@ -46,7 +46,6 @@ public class DataObject {
             }
         }
     }
-
     public void printBooks() {
         if (getBooks().isEmpty()) {
             System.out.println("Нет книг в списке");
@@ -56,7 +55,6 @@ public class DataObject {
             }
         }
     }
-
     public void printRootVegetable() {
         if (getRootVegetables().isEmpty()) {
             System.out.println("Нет корнеплода в списке");

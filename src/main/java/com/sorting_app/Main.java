@@ -2,38 +2,31 @@ package com.sorting_app;
 
 import com.sorting_app.data.DataObject;
 import com.sorting_app.handler.ValidationException;
-import com.sorting_app.input.ConsoleInput;
-import com.sorting_app.input.RandomInput;
-import com.sorting_app.input.ReadFileInput;
-
+import com.sorting_app.input.SortByEven;
+import com.sorting_app.strategy.*;
 
 import java.io.IOException;
 
 public class Main {
 
-
     public static void main(String[] args) throws IOException {
         DataObject dataObject = new DataObject();
-        ConsoleInput consoleInput = new ConsoleInput(dataObject);
-        RandomInput randomInput = new RandomInput(dataObject);
-        ReadFileInput readFileInput = new ReadFileInput(dataObject);
-        //   DataObject dataObject = new DataObject();
+
+        InputConsoleStrategy inputConsoleStrategy = new InputConsoleStrategy(dataObject);
+        InputRandomStrategy inputRandomStrategy = new InputRandomStrategy(dataObject);
+        InputFileStrategy inputFileStrategy = new InputFileStrategy(dataObject);
+        PrintObjectStrategy printObjectStrategy = new PrintObjectStrategy(dataObject);
+        RecordStrategy record = new RecordStrategy(dataObject);
+        BinarySearchStrategy search = new BinarySearchStrategy(dataObject);
+        SortByEven rv = new SortByEven(dataObject);
 
 
-        while (true) {
-            try {
-                consoleInput.selectObject();
-                 randomInput.selectRandomObject();
-               readFileInput.selectFileRead();
-                dataObject.printCars();
-                dataObject.printBooks();
-                dataObject.printRootVegetable();
-
-
-            } catch (ValidationException validationException) {
-                System.out.println(validationException.getMessage());
-            }
-
+        inputFileStrategy.getResult();
+        printObjectStrategy.getResult();
+        try {
+            rv.rootVegetableSortByEven();
+        } catch (ValidationException validationException){
+            System.out.println(validationException.getMessage());
         }
     }
 }

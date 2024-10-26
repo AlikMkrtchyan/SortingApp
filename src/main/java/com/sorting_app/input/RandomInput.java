@@ -12,52 +12,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+import static com.sorting_app.utils.ConstUtil.*;
+
 public class RandomInput {
+
+    DataObject dataObject;
+    public RandomInput(DataObject dataObject){this.dataObject = dataObject;}
+
     private final List<Book> loadBookList = new ArrayList<>();
     private final List<Car> loadCarList = new ArrayList<>();
     private final List<RootVegetable> loadRootVegetableList = new ArrayList<>();
     private String line;
-    DataObject dataObject;
-    static final String FILE_PATH_BOOK = "src\\main\\resources\\KeepBook.csv";
-    static final String FILE_PATH_CAR = "src\\main\\resources\\KeepCar.csv";
-    static final String FILE_PATH_ROOT_VEGETABLE = "src\\main\\resources\\KeepRootVegetable.csv";
 
-
-    public RandomInput(DataObject dataObject){this.dataObject = dataObject;}
-
-    public void selectRandomObject() throws ValidationException {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Выбери тип для рандомного заполнения:\n" +
-                    "1 - car, 2 - book, 3 - root vegetable");
-            int choose = scanner.nextInt();
-            System.out.println("Введите количество создаваемых объектов");
-            int count = scanner.nextInt();
-            switch (choose) {
-                case 1: {
-                    loadCarCSV();
-                    generateCarList(count);
-                    break;
-                }
-                case 2: {
-                    loadBooksCSV();
-                    generateBookList(count);
-                    break;
-                }
-                case 3: {
-                    loadRootVegetableCSV();
-                    generateRootVegetables(count);
-                    break;
-                }
-                default:
-                    System.out.println("Неверный ввод, введите цифру от 1 до 3");
-            }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифры от 1 до 3");
-        } catch (Exception e) {
-            throw new ValidationException("Проверьте файл на соответствие");
-        }
-    }
 
     public void loadCarCSV() throws ValidationException {
         File file = new File(FILE_PATH_CAR);

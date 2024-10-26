@@ -16,41 +16,15 @@ public class ConsoleInput {
         this.dataObject = dataObject;
     }
 
-    public void selectObject() throws ValidationException {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Выбери тип для заполнения:\n" +
-                    "1 - car, 2 - book, 3 - root vegetable");
-            int choose = scanner.nextInt();
-            System.out.println("Введите количество создаваемых объектов");
-            int count = scanner.nextInt();
-            for (int i = 1; i < count + 1; i++) {
-                System.out.println("Создаваемый объект №" + i);
-                switch (choose) {
-                    case 1:
-                        inputCar();
-                        break;
-                    case 2:
-                        inputBook();
-                        break;
-                    case 3:
-                        inputRootVegetable();
-                        break;
-                    default:
-                        System.out.println("Неверный ввод, введите цифру от 1 до 3");
-                        break;
-                }
-            }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Введен неверный тип данных");
-        }
+    public DataObject getDataObject() {
+        return dataObject;
     }
 
     public void inputCar() throws ValidationException {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Введи модель");
-            String model = scanner.nextLine().strip().toUpperCase();
+            String model = scanner.nextLine();
             System.out.println("Введи мощность");
             int power = scanner.nextInt();
             System.out.println("Введи год выпуска");
@@ -62,7 +36,7 @@ public class ConsoleInput {
                     .setPower(power)
                     .setYear(year)
                     .build();
-            dataObject.getCars().add(car);
+            dataObject.addCar(car);
         } catch (InputMismatchException exception) {
             throw new ValidationException("Введен неверный тип данных");
         }
@@ -100,8 +74,7 @@ public class ConsoleInput {
             System.out.println("Введи тип");
             String type = scanner.nextLine();
             System.out.println("Введи вес");
-            int weight = scanner.nextInt();
-            scanner.nextLine();
+            int weight = Integer.parseInt(scanner.nextLine());
             System.out.println("Введи цвет");
             String color = scanner.nextLine();
             if (type.isEmpty()) {
@@ -120,5 +93,4 @@ public class ConsoleInput {
             throw new ValidationException("Введен неверный тип данных");
         }
     }
-
 }
