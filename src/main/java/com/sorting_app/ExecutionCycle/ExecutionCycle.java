@@ -1,15 +1,16 @@
 package com.sorting_app.ExecutionCycle;
 
+import com.sorting_app.handler.ValidationException;
+import com.sorting_app.input.Record;
 import com.sorting_app.utils.Printer;
 import com.sorting_app.data.DataObject;
 import com.sorting_app.strategy.*;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ExecutionCycle {
-    private static final Scanner scanner = new Scanner(System.in);
-    private static int command;
+    private final Scanner scanner = new Scanner(System.in);
+    private int command;
     private DataObject dataObject;
     private Context context;
     private boolean isExit;
@@ -42,15 +43,19 @@ public class ExecutionCycle {
                     recordCollectionInFile();
                     break;
                 }
-//                case 5: {
-//                    writeFoundElementsInFile();
-//                    break;
-//                }
                 case 5: {
-                    printCollection();
+                    clearFile();
                     break;
                 }
                 case 6: {
+                    clearCollection();
+                    break;
+                }
+                case 7: {
+                    printCollection();
+                    break;
+                }
+                case 8: {
                     isExit = true;
                     break;
                 }
@@ -115,8 +120,8 @@ public class ExecutionCycle {
                     break;
                 }
                 case 2: {
-//                    context.setStrategy(new (dataObject));
-//                    context.commandSelected();
+                    context.setStrategy(new SortByEvenStrategy(dataObject));
+                    context.commandSelected();
                     isCorrect = true;
                     break;
                 }
@@ -127,22 +132,72 @@ public class ExecutionCycle {
         }
     }
 
-    public void findElement() {
-//        boolean isFound = false;
-//
+    private void findElement() {
         context.setStrategy(new BinarySearchStrategy(dataObject));// find
         context.commandSelected();
-//        if (isFound) {
-//            System.out.println("Элемент найден");
-//            //writeFoundElementInFile();
-//        } else {
-//            System.out.println("Элемент не найден");
-//        }
     }
 
     private void recordCollectionInFile() {
         context.setStrategy(new RecordStrategy(dataObject));
         context.commandSelected();
+    }
+
+    private void clearFile() {
+        try {
+            isCorrect = checkClean("файл");
+            if (!isCorrect) {
+                Record.clearFile();
+                System.out.println("\n<<<ФАЙЛ ОЧИЩЕН>>>");
+            }
+        }
+        catch (ValidationException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void clearCollection() {
+        isCorrect = checkClean("коллекцию");
+        if (!isCorrect) {
+            System.out.println("Выберите тип коллекции, которую хотите очистить:" +
+                    "\n1 - АВТОМОБИЛИ;" +
+                    "\n2 - КНИГИ;" +
+                    "\n3 - КОРНЕПЛОДЫ;" +
+                    "\n4 - ВСЕ КОЛЛЕКЦИИ.");
+        }
+        while (!isCorrect) {
+            enterCommand();
+            switch (command) {
+                case 1: {
+                    dataObject.getCars().clear();
+                    isCorrect = true;
+                    System.out.println("\n<<<Коллекция АВТОМОБИЛИ очищена>>>");
+                    break;
+                }
+                case 2: {
+                    dataObject.getBooks().clear();
+                    isCorrect = true;
+                    System.out.println("\n<<<Коллекция КНИГИ очищена>>>");
+                    break;
+                }
+                case 3: {
+                    dataObject.getRootVegetables().clear();
+                    isCorrect = true;
+                    System.out.println("\n<<<Коллекция КОРНЕПЛОДЫ очищена>>>");
+                    break;
+                }
+                case 4: {
+                    dataObject.getCars().clear();
+                    dataObject.getBooks().clear();
+                    dataObject.getRootVegetables().clear();
+                    isCorrect = true;
+                    System.out.println("\n<<<Все коллекции очищены>>>");
+                    break;
+                }
+                default: {
+                    System.out.println("Введите число от 1 до 4.");
+                }
+            }
+        }
     }
 
     private void printCollection() {
@@ -156,6 +211,20 @@ public class ExecutionCycle {
             command = scanner.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("Команда может быть только в числовом виде.");
+        }
+    }
+
+    private boolean checkClean(String cleanningItem) {
+        System.out.println("Вы действительно хотите очистить " + cleanningItem + ". \n1 - ДА;\n2 - НЕТ.\n");
+        while (true) {
+            enterCommand();
+            if (command == 1) {
+                return false;
+            } else if (command == 2) {
+                return true;
+            } else {
+                System.out.println("Введите 1 - если хотите очистить, 2 - если не хотите очищать.");
+            }
         }
     }
 }
