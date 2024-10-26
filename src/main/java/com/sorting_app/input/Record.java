@@ -76,7 +76,7 @@ public class Record {
         }
     }
 
-    public void clear() throws ValidationException {
+    public static void clearFile() throws ValidationException {
         try {
             Files.newBufferedWriter(Path.of(FILE_PATH), StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
