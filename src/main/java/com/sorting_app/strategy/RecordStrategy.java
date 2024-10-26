@@ -79,6 +79,5 @@ public class RecordStrategy implements IStrategy {
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
-        System.out.println("\n<<<Запись успешно выполнена>>>\n".toUpperCase());
     }
 }

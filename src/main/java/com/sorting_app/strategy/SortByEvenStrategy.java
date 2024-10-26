@@ -2,47 +2,46 @@ package com.sorting_app.strategy;
 
 import com.sorting_app.data.DataObject;
 import com.sorting_app.handler.ValidationException;
-import com.sorting_app.input.ReadFileInput;
+import com.sorting_app.input.SortByEven;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class InputFileStrategy implements IStrategy{
-    DataObject dataObject;
+public class SortByEvenStrategy implements IStrategy {
+    private final DataObject dataObject;
 
-    public InputFileStrategy(DataObject dataObject) {
+    public SortByEvenStrategy(DataObject dataObject) {
         this.dataObject = dataObject;
     }
 
-    private void selectFileRead() throws ValidationException {
-        ReadFileInput readFileInput = new ReadFileInput(dataObject);
+
+    private void selectObjectSortByOddEven() throws ValidationException {
+        SortByEven sort = new SortByEven(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("\nВведите цифру от 1 до 4 для записи данных из файла\n" +
+            System.out.println("\nВведите цифру от 1 до 4 для cортировки объектов по четным значениям\n" +
                     "1 - АВТОМОБИЛЬ;  " +
                     "2 - КНИГИ;  " +
                     "3 - КОРНЕПЛОД  " +
-                    "4 - ЗАПИСЬ ВО ВСЕ ОБЪЕКТЫ");
+                    "4 - СОРТИРОВКА ВСЕХ ОБЪЕКТОВ");
             int choose = scanner.nextInt();
-            System.out.println("Введите количество создаваемых объектов");
-            int count = scanner.nextInt();
             switch (choose) {
                 case 1: {
-                    readFileInput.loadCarCSV(count);
+                    sort.carSortByEven();
                     break;
                 }
                 case 2: {
-                    readFileInput.loadBooksCSV(count);
+                    sort.bookSortByEven();
                     break;
                 }
                 case 3: {
-                    readFileInput.loadRootVegetableCSV(count);
+                    sort.rootVegetableSortByEven();
                     break;
                 }
                 case 4: {
-                    readFileInput.loadCarCSV(count);
-                    readFileInput.loadBooksCSV(count);
-                    readFileInput.loadRootVegetableCSV(count);
+                    sort.carSortByEven();
+                    sort.bookSortByEven();
+                    sort.rootVegetableSortByEven();
                     break;
                 }
                 default:
@@ -51,17 +50,20 @@ public class InputFileStrategy implements IStrategy{
         } catch (InputMismatchException e) {
             throw new ValidationException("Неверный ввод, введите цифру от 1 до 4");
         } catch (Exception e) {
-            throw new ValidationException("Проверьте файл на соответствие");
+            throw new ValidationException("Проверьте коллекцию на соответствие");
         }
+
     }
+
 
     @Override
     public void getResult() {
         try {
-            selectFileRead();
-        }catch (ValidationException validationException){
+            selectObjectSortByOddEven();
+        } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
-
     }
+
+
 }

@@ -77,7 +77,7 @@ private final DataObject dataObject;
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        System.out.println("\n<<<Сортировка успешно выполнена>>>\n".toUpperCase());
+
     }
 
 

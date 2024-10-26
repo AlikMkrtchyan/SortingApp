@@ -53,6 +53,5 @@ public class PrintObjectStrategy implements IStrategy {
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        System.out.println("\n<<<УСПЕШНО ВЫПОЛНЕНО>>>\n");
     }
 }

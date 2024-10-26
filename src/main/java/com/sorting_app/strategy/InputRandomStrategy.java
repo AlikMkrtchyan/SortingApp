@@ -70,6 +70,6 @@ public class InputRandomStrategy implements IStrategy{
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-        System.out.println("<<<Выборочное добавление данных в коллекцию выполнено>>>".toUpperCase());
+
     }
 }
