@@ -9,6 +9,7 @@ public final class BinarySearch {
     }
 
     public static <T extends Comparable<T>> int binarySearch(List<T> list, T key) {
+        MergeSort.mergeSort(list);
         int low = 0;
         int high = list.size() - 1;
 

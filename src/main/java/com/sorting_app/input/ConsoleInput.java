@@ -24,7 +24,7 @@ public class ConsoleInput {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Введи модель");
-            String model = scanner.nextLine().strip().toUpperCase();
+            String model = scanner.nextLine();
             System.out.println("Введи мощность");
             int power = scanner.nextInt();
             System.out.println("Введи год выпуска");
@@ -74,8 +74,7 @@ public class ConsoleInput {
             System.out.println("Введи тип");
             String type = scanner.nextLine();
             System.out.println("Введи вес");
-            int weight = scanner.nextInt();
-            scanner.nextLine();
+            int weight = Integer.parseInt(scanner.nextLine());
             System.out.println("Введи цвет");
             String color = scanner.nextLine();
             if (type.isEmpty()) {
