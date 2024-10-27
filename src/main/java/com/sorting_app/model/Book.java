@@ -4,18 +4,18 @@ package com.sorting_app.model;
 import java.util.Comparator;
 
 public class Book implements Comparable<Book> {
-    private final String book;
+    private final String bookName;
     private final String author;
     private final int pages;
 
     private Book(BookBuilder builder) {
-        this.book = builder.book;
+        this.bookName = builder.book;
         this.author = builder.author;
         this.pages = builder.pages;
     }
 
-    public String getBook() {
-        return book;
+    public String getBookName() {
+        return bookName;
     }
 
     public String getAuthor() {
@@ -28,16 +28,16 @@ public class Book implements Comparable<Book> {
 
     @Override
     public int compareTo(Book o) {
-        return Comparator.nullsLast(Comparator.comparing(Book::getBook, Comparator.nullsLast(Comparator.naturalOrder()))
-                        .thenComparing(Book::getAuthor, Comparator.nullsLast(Comparator.naturalOrder())))
-                .thenComparingInt(Book::getPages)
-                .compare(this, o);
+        return Comparator.nullsLast(
+                            Comparator.comparing(Book::getBookName, Comparator.nullsLast(Comparator.naturalOrder()))
+                                      .thenComparing(Book::getAuthor, Comparator.nullsLast(Comparator.naturalOrder())))
+                                      .thenComparingInt(Book::getPages)
+                                      .compare(this, o);
     }
 
     @Override
     public String toString() {
-        return String.format("Книга: %s; Автор: %s; Страницы: %d",
-                book, author, pages);
+        return String.format("Книга: %s; Автор: %s; Страницы: %d", bookName, author, pages);
     }
 
     public static class BookBuilder {
@@ -45,8 +45,7 @@ public class Book implements Comparable<Book> {
         private String author;
         private int pages;
 
-        public BookBuilder() {
-        }
+        public BookBuilder() {}
 
         public BookBuilder setBook(String book) {
             this.book = book;

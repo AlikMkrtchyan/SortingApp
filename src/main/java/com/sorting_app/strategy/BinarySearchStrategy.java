@@ -33,28 +33,31 @@ public class BinarySearchStrategy implements IStrategy {
                 case 1: {
                     if (!dataObject.getCars().isEmpty()) {
                         List<Car> cars = searchInputData.findСar();
-                        System.out.println("\nЗаписать найденные данные в файл?\n" +
-                                "1 - ДА   " +
-                                "2 - НЕТ".toUpperCase());
-                        int selectCount = scanner.nextInt();
-                        if (selectCount == 1) {
-                            record.recordCar(cars);
-                            break;
+                        if (!cars.isEmpty()) {
+                            System.out.println("\nЗаписать найденные данные в файл?\n" +
+                                    "1 - ДА   " +
+                                    "2 - НЕТ".toUpperCase());
+                            int selectCount = scanner.nextInt();
+                            if (selectCount == 1) {
+                                record.recordCar(cars);
+                            }
                         }
-                    } else{
+                    } else {
                         System.out.println("Коллекция машин пуста");
                     }
                     break;
                 }
                 case 2: {
-                    if(!dataObject.getBooks().isEmpty()){
+                    if (!dataObject.getBooks().isEmpty()) {
                         List<Book> books = searchInputData.findBooks();
-                        System.out.println("Записать найденные данные в файл?\n" +
-                                "1 - ДА   " +
-                                "2 - НЕТ".toUpperCase());
-                        int selectCount = scanner.nextInt();
-                        if (selectCount == 1) {
-                            record.recordBook(books);
+                        if (!books.isEmpty()) {
+                            System.out.println("Записать найденные данные в файл?\n" +
+                                    "1 - ДА   " +
+                                    "2 - НЕТ".toUpperCase());
+                            int selectCount = scanner.nextInt();
+                            if (selectCount == 1) {
+                                record.recordBook(books);
+                            }
                         }
                     } else {
                         System.out.println("Коллекция книг пуста");
@@ -62,14 +65,16 @@ public class BinarySearchStrategy implements IStrategy {
                     break;
                 }
                 case 3: {
-                    if(!dataObject.getRootVegetables().isEmpty()){
+                    if (!dataObject.getRootVegetables().isEmpty()) {
                         List<RootVegetable> rootVegetables = searchInputData.findRootVegetable();
-                        System.out.println("Записать найденные данные в файл?\n" +
-                                "1 - ДА    " +
-                                "2 - НЕТ".toUpperCase());
-                        int selectCount = scanner.nextInt();
-                        if (selectCount == 1) {
-                            record.recordRootVegetable(rootVegetables);
+                        if (!rootVegetables.isEmpty()) {
+                            System.out.println("Записать найденные данные в файл?\n" +
+                                    "1 - ДА    " +
+                                    "2 - НЕТ".toUpperCase());
+                            int selectCount = scanner.nextInt();
+                            if (selectCount == 1) {
+                                record.recordRootVegetable(rootVegetables);
+                            }
                         }
                     } else {
                         System.out.println("Коллекция корнеплодов пуста");
@@ -87,7 +92,7 @@ public class BinarySearchStrategy implements IStrategy {
     }
 
     @Override
-    public void getResult() {
+    public void generationResult() {
         try {
             selectBinarySearch();
         } catch (ValidationException validationException) {

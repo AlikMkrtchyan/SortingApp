@@ -7,7 +7,6 @@ import com.sorting_app.model.Car;
 import com.sorting_app.model.RootVegetable;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -20,8 +19,8 @@ public class ReadFileInput {
 
 
     public void loadBooksCSV(int count) throws ValidationException {
-        File file = new File(FILE_PATH_BOOK);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH_BOOK))) {
             String line;
             for(int i = 0; i < count; i++){
                 line = reader.readLine();
@@ -43,8 +42,8 @@ public class ReadFileInput {
     }
 
     public void loadCarCSV(int count) throws ValidationException {
-        File file = new File(FILE_PATH_CAR);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH_CAR))) {
             String line;
             for(int i = 0; i < count; i++){
                 line = reader.readLine();
@@ -65,8 +64,8 @@ public class ReadFileInput {
     }
 
     public void loadRootVegetableCSV(int count) throws ValidationException {
-        File file = new File(FILE_PATH_ROOT_VEGETABLE);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH_ROOT_VEGETABLE))) {
             for(int i = 0; i < count; i++){
                 String line;
                 line = reader.readLine();

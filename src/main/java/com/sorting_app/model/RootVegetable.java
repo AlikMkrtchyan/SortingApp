@@ -28,11 +28,11 @@ public class RootVegetable implements Comparable<RootVegetable> {
 
     @Override
     public int compareTo(RootVegetable o) {
-        return Comparator.nullsLast(Comparator.comparing(RootVegetable::getType,
-                        Comparator.nullsLast(Comparator.naturalOrder())))
-                .thenComparingInt(RootVegetable::getWeight)
-                .thenComparing(Comparator.nullsLast(Comparator.comparing(RootVegetable::getColor)))
-                .compare(this, o);
+        return Comparator.nullsLast(
+                Comparator.comparing(RootVegetable::getType, Comparator.nullsLast(Comparator.naturalOrder())))
+                    .thenComparingInt(RootVegetable::getWeight)
+                    .thenComparing(Comparator.nullsLast(Comparator.comparing(RootVegetable::getColor)))
+                    .compare(this, o);
     }
 
     @Override

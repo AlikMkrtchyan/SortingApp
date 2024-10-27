@@ -1,4 +1,4 @@
-package com.sorting_app.ExecutionCycle;
+package com.sorting_app.execution_cycle;
 
 import com.sorting_app.strategy.IStrategy;
 
@@ -10,6 +10,6 @@ public class Context {
     }
 
     public void commandSelected() {
-        strategy.getResult();
+        strategy.generationResult();
     }
 }

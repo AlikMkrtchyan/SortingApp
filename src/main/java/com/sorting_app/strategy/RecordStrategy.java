@@ -73,7 +73,7 @@ public class RecordStrategy implements IStrategy {
     }
 
     @Override
-    public void getResult() {
+    public void generationResult() {
         try {
             selectedRecord();
         } catch (ValidationException validationException) {

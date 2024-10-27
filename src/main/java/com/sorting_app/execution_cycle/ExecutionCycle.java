@@ -1,4 +1,4 @@
-package com.sorting_app.ExecutionCycle;
+package com.sorting_app.execution_cycle;
 
 import com.sorting_app.handler.ValidationException;
 import com.sorting_app.input.Record;

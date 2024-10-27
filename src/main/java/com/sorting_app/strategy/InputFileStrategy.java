@@ -56,12 +56,11 @@ public class InputFileStrategy implements IStrategy{
     }
 
     @Override
-    public void getResult() {
+    public void generationResult() {
         try {
             selectFileRead();
         }catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-
     }
 }

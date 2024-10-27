@@ -6,11 +6,14 @@ import com.sorting_app.model.Book;
 import com.sorting_app.model.Car;
 import com.sorting_app.model.RootVegetable;
 import com.sorting_app.utils.BinarySearch;
-import com.sorting_app.utils.MergeSort;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
 
 public class SearchInputData {
-    private DataObject dataObject;
+    private final DataObject dataObject;
 
     public SearchInputData(DataObject dataObject) {
         this.dataObject = dataObject;
@@ -38,10 +41,11 @@ public class SearchInputData {
             int count = BinarySearch.binarySearch(dataObject.getCars(), car);
             if (count >= 0) {
                 result.add(dataObject.getCars().get(count));
-            }
-            System.out.println(
-                    "Всего найдено совпадений: ".toUpperCase() + result.size());
+                System.out.println("\nСовпадение найдено под индексом: ".toUpperCase() + count);
+            } else {System.out.println("\nСовпадений нет".toUpperCase());}
+
             return result;
+
         } catch (InputMismatchException e) {
             throw new ValidationException("Неверный ввод! введите соответствующий тип данных");
         }
@@ -68,14 +72,15 @@ public class SearchInputData {
                     .setAuthor(author)
                     .setPages(pages)
                     .build();
-            MergeSort.mergeSort(dataObject.getBooks());
+
             int count = BinarySearch.binarySearch(dataObject.getBooks(), book);
             if (count >= 0) {
                 result.add(dataObject.getBooks().get(count));
-            }
-            System.out.println(
-                    "Всего найдено совпадений: ".toUpperCase() + result.size());
+                System.out.println("\nСовпадение найдено под индексом: ".toUpperCase() + count);
+            } else {System.out.println("\nСовпадений нет".toUpperCase());}
+
             return result;
+
         } catch (InputMismatchException e){
             throw new ValidationException("Неверный ввод! введите соответствующий тип данных");
         }
@@ -104,13 +109,13 @@ public class SearchInputData {
                             .setWeight(weight)
                             .setColor(color)
                             .build();
-          //  MergeSort.mergeSort(dataObject.getRootVegetables());
-            int count = BinarySearch.binarySearch(dataObject.getRootVegetables(), rootVegetable);
-            if (count >= 0) {
-                result.add(dataObject.getRootVegetables().get(count));
-            }
-            System.out.println(
-                    "Всего найдено совпадений: ".toUpperCase() + result.size());
+
+                int count = BinarySearch.binarySearch(dataObject.getRootVegetables(), rootVegetable);
+                if (count >= 0) {
+                    result.add(dataObject.getRootVegetables().get(count));
+                    System.out.println("\nСовпадение найдено под индексом: ".toUpperCase() + count);
+                } else {System.out.println("\nСовпадений нет".toUpperCase());}
+
             return result;
         } catch (InputMismatchException e) {
             throw new ValidationException("Неверный ввод! введите соответствующий тип данных");

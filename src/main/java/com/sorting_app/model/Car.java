@@ -28,11 +28,11 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return Comparator.nullsLast(Comparator.comparing(Car::getModel,
-                        Comparator.nullsLast(Comparator.naturalOrder())))
-                .thenComparingInt(Car::getPower)
-                .thenComparingInt(Car::getYear)
-                .compare(this, o);
+        return Comparator.nullsLast(
+                Comparator.comparing(Car::getModel, Comparator.nullsLast(Comparator.naturalOrder())))
+                    .thenComparingInt(Car::getPower)
+                    .thenComparingInt(Car::getYear)
+                    .compare(this, o);
     }
 
     @Override

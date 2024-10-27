@@ -57,7 +57,7 @@ public class SortByEvenStrategy implements IStrategy {
 
 
     @Override
-    public void getResult() {
+    public void generationResult() {
         try {
             selectObjectSortByOddEven();
         } catch (ValidationException validationException) {

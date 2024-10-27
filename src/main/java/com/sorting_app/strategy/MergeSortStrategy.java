@@ -71,7 +71,7 @@ private final DataObject dataObject;
     }
 
     @Override
-    public void getResult() {
+    public void generationResult() {
         try {
             selectMergeSort();
         }catch (ValidationException validationException){

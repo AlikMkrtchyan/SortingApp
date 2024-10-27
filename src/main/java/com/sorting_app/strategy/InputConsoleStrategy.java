@@ -48,7 +48,7 @@ public class InputConsoleStrategy implements IStrategy {
     }
 
     @Override
-    public void getResult() {
+    public void generationResult() {
         try {
            selectObject();
         } catch (ValidationException validationException) {

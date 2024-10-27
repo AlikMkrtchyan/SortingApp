@@ -7,7 +7,6 @@ import com.sorting_app.model.Car;
 import com.sorting_app.model.RootVegetable;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -26,8 +25,9 @@ public class RandomInput {
 
 
     public void loadCarCSV() throws ValidationException {
-        File file = new File(FILE_PATH_CAR);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH_CAR))) {
+
            while (reader.readLine() != null){
                 line = reader.readLine();
                 String[] values = line.split(",");
@@ -47,8 +47,9 @@ public class RandomInput {
     }
 
     public void loadBooksCSV() throws ValidationException {
-        File file = new File(FILE_PATH_BOOK);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH_BOOK))) {
+
             while (reader.readLine() != null){
                 line = reader.readLine();
                 String[] values = line.split(",");
@@ -69,8 +70,9 @@ public class RandomInput {
     }
 
     public void loadRootVegetableCSV() throws ValidationException {
-        File file = new File(FILE_PATH_ROOT_VEGETABLE);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH_ROOT_VEGETABLE))) {
+
            while (reader.readLine() != null){
                 line = reader.readLine();
                 String[] values = line.split(",");

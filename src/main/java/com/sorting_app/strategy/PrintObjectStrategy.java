@@ -47,7 +47,7 @@ public class PrintObjectStrategy implements IStrategy {
     }
 
     @Override
-    public void getResult() {
+    public void generationResult() {
         try {
             selectPrint();
         }catch (ValidationException validationException){

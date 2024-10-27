@@ -12,9 +12,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
-import java.util.Objects;
 
-import static com.sorting_app.utils.ConstUtil.FILE_PATH;
+import static com.sorting_app.utils.ConstUtil.*;
 
 
 public class Record {
@@ -25,89 +24,101 @@ public class Record {
     }
 
     public void recordCar() throws ValidationException {
-
         try {
-            Files.writeString(Paths.get(FILE_PATH),
-                        "\n-------------------\n" +
-                            "Добавленные автомобили:\n" +
-                            "Модель, Мощность, Год выпуска\n"
-                    ,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.writeString(
+                    Paths.get(RECORD_FILE_PATH),
+                    TEXT_FILE_RECORD_ADD_CAR,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND);
+
             for (Car car : dataObject.getCars()) {
-                String line = car.getModel() + "," + car.getPower() + "," + car.getYear() + "\n";
-                Files.writeString(Paths.get(FILE_PATH), line, StandardOpenOption.APPEND);
+                String line = "Модель: " + car.getModel() + ", Мощность: " + car.getPower() + ", Год выпуска: " + car.getYear() + "\n";
+                Files.writeString(Paths.get(RECORD_FILE_PATH), line, StandardOpenOption.APPEND);
             }
+
+            System.out.println("Машины записаны в файл " + RECORD_FILE_PATH);
+
         } catch (IOException e) {
             throw new ValidationException("Ошибка при записи");
         }
     }
 
     public void recordCar(List<Car> cars) throws ValidationException {
-
         try {
-            Files.writeString(Paths.get(FILE_PATH),
-                    "\n-------------------\n" +
-                            "Добавленные автомобили:\n" +
-                            "Модель, Мощность, Год выпуска\n"
-                    ,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.writeString(
+                    Paths.get(RECORD_FILE_PATH),
+                    TEXT_FILE_RECORD_ADD_CAR,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND);
+
             for (Car car : cars) {
-                String line = car.getModel() + "," + car.getPower() + "," + car.getYear() + "\n";
-                Files.writeString(Paths.get(FILE_PATH), line, StandardOpenOption.APPEND);
+                String line = "Модель: " + car.getModel() + ", Мощность: " + car.getPower() + ", Год выпуска: " + car.getYear() + "\n";
+                Files.writeString(Paths.get(RECORD_FILE_PATH), line, StandardOpenOption.APPEND);
             }
+
+            System.out.println("Машины записаны в файл " + RECORD_FILE_PATH);
+
         } catch (IOException e) {
             throw new ValidationException("Ошибка при записи");
         }
     }
 
     public void recordBook() throws ValidationException {
-        Path pathToFile = Paths.get(FILE_PATH);
         try {
-            Files.writeString(Paths.get(FILE_PATH),
-                    "\n-------------------\n" +
-                            "Добавленные книги:\n" +
-                            "Название, Автор, Кол-во страниц\n"
-                    ,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.writeString(
+                    Paths.get(RECORD_FILE_PATH),
+                    TEXT_FILE_RECORD_ADD_BOOK,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND);
+
             for (Book book : dataObject.getBooks()) {
-                String line = book.getBook() + "," + book.getAuthor() + "," + book.getPages() + "\n";
-                Files.writeString(pathToFile, line, StandardOpenOption.APPEND);
-                System.out.println("Книги записаны в файл " + FILE_PATH);
+                String line = "Название: " + book.getBookName() + ", Автор: " + book.getAuthor() + ", Кол-во страниц: " + book.getPages() + "\n";
+                Files.writeString(Paths.get(RECORD_FILE_PATH), line, StandardOpenOption.APPEND);
             }
+
+            System.out.println("Книги записаны в файл " + RECORD_FILE_PATH);
+
         } catch (IOException e) {
-           throw new ValidationException("Ошибка при записи");
+            throw new ValidationException("Ошибка при записи");
         }
     }
 
     public void recordBook(List<Book> books) throws ValidationException {
-
         try {
-            Files.writeString(Paths.get(FILE_PATH),
-                    "\n-------------------\n" +
-                            "Добавленные книги:\n" +
-                            "Название, Автор, Кол-во страниц\n"
-                    ,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.writeString(
+                    Paths.get(RECORD_FILE_PATH),
+                    TEXT_FILE_RECORD_ADD_BOOK,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND);
+
             for (Book book : books) {
-                String line = book.getBook() + "," + book.getAuthor() + "," + book.getPages() + "\n";
-                Files.writeString(Paths.get(FILE_PATH), line, StandardOpenOption.APPEND);
-                System.out.println("Книги записаны в файл " + FILE_PATH);
+                String line = "Название: " + book.getBookName() + ", Автор: " + book.getAuthor() + ", Кол-во страниц: " + book.getPages() + "\n";
+                Files.writeString(Paths.get(RECORD_FILE_PATH), line, StandardOpenOption.APPEND);
             }
+
+            System.out.println("Книги записаны в файл " + RECORD_FILE_PATH);
+
         } catch (IOException e) {
             throw new ValidationException("Ошибка при записи");
         }
     }
 
     public void recordRootVegetable() throws ValidationException {
-
         try {
-            Files.writeString(Paths.get(FILE_PATH),
-                    "\n-------------------\n" +
-                            "Добавленные овощи:\n" +
-                            "Вид, Вес, Цвет\n"
-                    ,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.writeString(
+                    Paths.get(RECORD_FILE_PATH),
+                    TEXT_FILE_RECORD_ADD_ROOT_VEGETABLE,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND);
+
             for (RootVegetable vegetable : dataObject.getRootVegetables()) {
-                String line = vegetable.getType() + "," + vegetable.getWeight() + ","
-                        + vegetable.getColor() + "\n";
-                Files.writeString(Paths.get(FILE_PATH), line, StandardOpenOption.APPEND);
-                System.out.println("Книги записаны в файл " + FILE_PATH);
+                String line = "Тип: " + vegetable.getType() + ", Вес: " + vegetable.getWeight() + ", Цвет: " + vegetable.getColor() + "\n";
+                Files.writeString(Paths.get(RECORD_FILE_PATH), line, StandardOpenOption.APPEND);
+
             }
+
+            System.out.println("Корнеплоды записаны в файл " + RECORD_FILE_PATH);
+
         } catch (IOException e) {
             throw new ValidationException("Ошибка при записи");
         }
@@ -115,17 +126,20 @@ public class Record {
 
     public void recordRootVegetable(List<RootVegetable> rootVegetables) throws ValidationException {
         try {
-            Files.writeString(Paths.get(FILE_PATH),
-                    "\n-------------------\n" +
-                            "Добавленные овощи:\n" +
-                            "Вид, Вес, Цвет\n"
-                    ,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.writeString(
+                    Paths.get(RECORD_FILE_PATH),
+                    TEXT_FILE_RECORD_ADD_ROOT_VEGETABLE,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND);
+
             for (RootVegetable vegetable : rootVegetables) {
-                String line = vegetable.getType() + "," + vegetable.getWeight() + ","
-                        + vegetable.getColor() + "\n";
-                Files.writeString(Paths.get(FILE_PATH), line, StandardOpenOption.APPEND);
-                System.out.println("Книги записаны в файл " + FILE_PATH);
+                String line = "Тип: " + vegetable.getType() + ", Вес: " + vegetable.getWeight() + ", Цвет: " + vegetable.getColor() + "\n";
+                Files.writeString(Paths.get(RECORD_FILE_PATH), line, StandardOpenOption.APPEND);
+
             }
+
+            System.out.println("Корнеплоды записаны в файл " + RECORD_FILE_PATH);
+
         } catch (IOException e) {
             throw new ValidationException("Ошибка при записи");
         }
@@ -133,7 +147,7 @@ public class Record {
 
     public static void clearFile() throws ValidationException {
         try {
-            Files.newBufferedWriter(Path.of(FILE_PATH), StandardOpenOption.TRUNCATE_EXISTING);
+            Files.newBufferedWriter(Path.of(RECORD_FILE_PATH), StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             throw new ValidationException("Проверьте наличие файла");
         }

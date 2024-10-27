@@ -64,7 +64,7 @@ public class InputRandomStrategy implements IStrategy{
 
 
     @Override
-    public void getResult() {
+    public void generationResult() {
         try {
            selectRandomObject();
         }catch (ValidationException validationException){
