@@ -89,7 +89,7 @@ public class ConsoleInput {
                             .setColor(color)
                             .build();
             dataObject.addRootVegetable(rootVegetable);
-        } catch (InputMismatchException exception) {
+        } catch (InputMismatchException | NumberFormatException exception) {
             throw new ValidationException("Введен неверный тип данных");
         }
     }

@@ -8,13 +8,16 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputConsoleStrategy implements IStrategy {
+
     DataObject dataObject;
 
     public InputConsoleStrategy(DataObject dataObject) {
         this.dataObject = dataObject;
     }
 
-    private void selectObject() throws ValidationException {
+
+    @Override
+    public void generationResult() {
         ConsoleInput consoleInput = new ConsoleInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
@@ -39,20 +42,11 @@ public class InputConsoleStrategy implements IStrategy {
                         break;
                     default:
                         System.out.println("Неверный ввод, введите цифру от 1 до 3");
-                        break;
                 }
             }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Введен неверный тип данных");
-        }
-    }
-
-    @Override
-    public void generationResult() {
-        try {
-           selectObject();
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
+
         }
     }
 }

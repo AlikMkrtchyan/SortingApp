@@ -13,13 +13,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BinarySearchStrategy implements IStrategy {
+
     private final DataObject dataObject;
 
     public BinarySearchStrategy(DataObject dataObject) {
         this.dataObject = dataObject;
     }
 
-    private void selectBinarySearch() throws ValidationException {
+
+    @Override
+    public void generationResult() {
         SearchInputData searchInputData = new SearchInputData(dataObject);
         Record record = new Record(dataObject);
         try {
@@ -82,22 +85,10 @@ public class BinarySearchStrategy implements IStrategy {
                     break;
                 }
                 default:
-                    break;
+                    System.out.println("Неверный ввод, введите цифру от 1 до 3");
             }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифру от 1 до 3");
-        } catch (Exception e) {
-            throw new ValidationException(e.getMessage());
-        }
-    }
-
-    @Override
-    public void generationResult() {
-        try {
-            selectBinarySearch();
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
-
     }
 }

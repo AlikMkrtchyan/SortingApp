@@ -4,17 +4,19 @@ import com.sorting_app.data.DataObject;
 import com.sorting_app.handler.ValidationException;
 import com.sorting_app.input.Record;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RecordStrategy implements IStrategy {
+
     private final DataObject dataObject;
 
     public RecordStrategy(DataObject dataObject) {
         this.dataObject = dataObject;
     }
 
-    public void selectedRecord() throws ValidationException {
+
+    @Override
+    public void generationResult() {
         Record record = new Record(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
@@ -28,13 +30,13 @@ public class RecordStrategy implements IStrategy {
                 case 1: {
                     if (!dataObject.getCars().isEmpty()) {
                         record.recordCar();
-                    } else{
+                    } else {
                         System.out.println("Коллекция машин пуста");
                     }
-                        break;
+                    break;
                 }
                 case 2: {
-                    if(!dataObject.getBooks().isEmpty()){
+                    if (!dataObject.getBooks().isEmpty()) {
                         record.recordBook();
                     } else {
                         System.out.println("Коллекция книг пуста");
@@ -43,7 +45,7 @@ public class RecordStrategy implements IStrategy {
                     break;
                 }
                 case 3: {
-                    if(!dataObject.getRootVegetables().isEmpty()){
+                    if (!dataObject.getRootVegetables().isEmpty()) {
                         record.recordRootVegetable();
                     } else {
                         System.out.println("Коллекция корнеплодов пуста");
@@ -51,9 +53,9 @@ public class RecordStrategy implements IStrategy {
                     break;
                 }
                 case 4: {
-                    if(!dataObject.getBooks().isEmpty() &&
+                    if (!dataObject.getBooks().isEmpty() &&
                             !dataObject.getCars().isEmpty() &&
-                            !dataObject.getRootVegetables().isEmpty()){
+                            !dataObject.getRootVegetables().isEmpty()) {
                         record.recordCar();
                         record.recordBook();
                         record.recordRootVegetable();
@@ -65,17 +67,6 @@ public class RecordStrategy implements IStrategy {
                 default:
                     System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифру от 1 до 4");
-        } catch (Exception e) {
-            throw new ValidationException("Проверьте файл на соответствие");
-        }
-    }
-
-    @Override
-    public void generationResult() {
-        try {
-            selectedRecord();
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }

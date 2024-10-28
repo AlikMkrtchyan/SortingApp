@@ -14,7 +14,9 @@ public class InputFileStrategy implements IStrategy{
         this.dataObject = dataObject;
     }
 
-    private void selectFileRead() throws ValidationException {
+
+    @Override
+    public void generationResult() {
         ReadFileInput readFileInput = new ReadFileInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
@@ -48,18 +50,7 @@ public class InputFileStrategy implements IStrategy{
                 default:
                     System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифру от 1 до 4");
-        } catch (Exception e) {
-            throw new ValidationException("Проверьте файл на соответствие");
-        }
-    }
-
-    @Override
-    public void generationResult() {
-        try {
-            selectFileRead();
-        }catch (ValidationException validationException){
+        } catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
     }

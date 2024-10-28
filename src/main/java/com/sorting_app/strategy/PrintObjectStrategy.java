@@ -6,52 +6,53 @@ import com.sorting_app.handler.ValidationException;
 import java.util.Scanner;
 
 public class PrintObjectStrategy implements IStrategy {
+
     DataObject dataObject;
 
     public PrintObjectStrategy(DataObject dataObject) {
         this.dataObject = dataObject;
     }
 
-    private void selectPrint() throws ValidationException{
-        try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("\nВведите цифру от 1 до 4 для вывода объекта\n\n" +
-                    "1 - АВТОМОБИЛЬ;  " +
-                    "2 - КНИГИ;  " +
-                    "3 - КОРНЕПЛОД  " +
-                    "4 - ВЫВЕСТИ ВСЕ ОБЪЕКТЫ");
-            int choose = scanner.nextInt();
-                switch (choose) {
-                    case 1:
-                        dataObject.printCars();
-                        break;
-                    case 2:
-                        dataObject.printBooks();
-                        break;
-                    case 3:
-                        dataObject.printRootVegetable();
-                        break;
-                    case 4: {
-                        dataObject.printCars();
-                        dataObject.printBooks();
-                        dataObject.printRootVegetable();
-                        break;
-                    }
-                    default:
-                        System.out.println("Неверный ввод, введите цифру от 1 до 4");
-                        break;
-            }
-        }catch (Exception e){
-            throw new ValidationException("Система вышла из строя вывод объекта не возможен");
-        }
-    }
-
     @Override
     public void generationResult() {
-        try {
-            selectPrint();
-        }catch (ValidationException validationException){
-            System.out.println(validationException.getMessage());
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nВведите цифру от 1 до 4 для вывода объекта\n\n" +
+                "1 - АВТОМОБИЛЬ;  " +
+                "2 - КНИГИ;  " +
+                "3 - КОРНЕПЛОД  " +
+                "4 - ВЫВЕСТИ ВСЕ ОБЪЕКТЫ");
+        int choose = scanner.nextInt();
+        switch (choose) {
+            case 1:
+                if (!dataObject.getCars().isEmpty()) {
+                    dataObject.printCars();
+                } else {
+                    System.out.println("Коллекция пуста");
+                }
+                break;
+            case 2:
+                if (!dataObject.getBooks().isEmpty()) {
+                    dataObject.printBooks();
+                } else {
+                    System.out.println("Коллекция пуста");
+                }
+                break;
+            case 3:
+                if (!dataObject.getRootVegetables().isEmpty()) {
+                    dataObject.printRootVegetable();
+                } else {
+                    System.out.println("Коллекция пуста");
+                }
+                break;
+            case 4: {
+                dataObject.printCars();
+                dataObject.printBooks();
+                dataObject.printRootVegetable();
+                break;
+            }
+            default:
+                System.out.println("Неверный ввод, введите цифру от 1 до 4");
+                break;
         }
     }
 }

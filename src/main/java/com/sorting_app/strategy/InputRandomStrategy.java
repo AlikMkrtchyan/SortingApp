@@ -15,7 +15,11 @@ public class InputRandomStrategy implements IStrategy{
         this.dataObject = dataObject;
     }
 
-    private void selectRandomObject() throws ValidationException {
+    private void selectRandomObject() throws ValidationException {}
+
+
+    @Override
+    public void generationResult() {
         RandomInput randomInput = new RandomInput(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
@@ -55,21 +59,8 @@ public class InputRandomStrategy implements IStrategy{
                 default:
                     System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
-        } catch (InputMismatchException e) {
-            throw new ValidationException("Неверный ввод, введите цифру от 1 до 4");
-        } catch (Exception e) {
-            throw new ValidationException("Проверьте файл на соответствие");
-        }
-    }
-
-
-    @Override
-    public void generationResult() {
-        try {
-           selectRandomObject();
-        }catch (ValidationException validationException){
+        } catch (ValidationException validationException){
             System.out.println(validationException.getMessage());
         }
-
     }
 }
