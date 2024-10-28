@@ -36,7 +36,7 @@ public class ReadFileInput {
                             .build());
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             throw new ValidationException("Проверьте файл на соответствие");
         }
     }
@@ -58,7 +58,7 @@ public class ReadFileInput {
                             .build());
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             throw new ValidationException("Проверьте файл на соответствие");
         }
     }
@@ -81,7 +81,7 @@ public class ReadFileInput {
                             .build());
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             throw new ValidationException("Проверьте файл на соответствие");
         }
     }
