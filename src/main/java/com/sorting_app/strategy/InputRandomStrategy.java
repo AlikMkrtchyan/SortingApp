@@ -8,14 +8,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class InputRandomStrategy implements IStrategy{
+public class InputRandomStrategy implements IStrategy {
     DataObject dataObject;
 
     public InputRandomStrategy(DataObject dataObject) {
         this.dataObject = dataObject;
     }
 
-    private void selectRandomObject() throws ValidationException {}
+    private void selectRandomObject() throws ValidationException {
+    }
 
 
     @Override
@@ -59,7 +60,9 @@ public class InputRandomStrategy implements IStrategy{
                 default:
                     System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
-        } catch (ValidationException validationException){
+        } catch (InputMismatchException exception) {
+            System.out.println("Неверный тип данных, введите цифры");
+        } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
     }

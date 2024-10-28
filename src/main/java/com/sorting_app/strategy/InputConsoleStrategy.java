@@ -44,6 +44,8 @@ public class InputConsoleStrategy implements IStrategy {
                         System.out.println("Неверный ввод, введите цифру от 1 до 3");
                 }
             }
+        } catch (InputMismatchException exception) {
+            System.out.println("Неверный тип данных, введите цифры");
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
 

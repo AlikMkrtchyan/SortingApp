@@ -7,7 +7,7 @@ import com.sorting_app.input.ReadFileInput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class InputFileStrategy implements IStrategy{
+public class InputFileStrategy implements IStrategy {
     DataObject dataObject;
 
     public InputFileStrategy(DataObject dataObject) {
@@ -50,7 +50,9 @@ public class InputFileStrategy implements IStrategy{
                 default:
                     System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
-        } catch (ValidationException validationException){
+        } catch (InputMismatchException exception) {
+            System.out.println("Неверный тип данных, введите цифры");
+        } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
     }
