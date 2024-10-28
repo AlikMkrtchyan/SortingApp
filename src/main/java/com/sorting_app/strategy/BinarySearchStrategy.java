@@ -86,8 +86,6 @@ public class BinarySearchStrategy implements IStrategy {
             }
         } catch (InputMismatchException e) {
             throw new ValidationException("Неверный ввод, введите цифру от 1 до 3");
-        } catch (Exception e) {
-            throw new ValidationException(e.getMessage());
         }
     }
 
