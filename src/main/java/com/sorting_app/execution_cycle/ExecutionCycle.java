@@ -30,6 +30,7 @@ public class ExecutionCycle {
                 enterCommand();
             } catch (ValidationException validationException) {
                 System.out.println(validationException.getMessage());
+                command = 0;
             }
             switch (command) {
                 case 1: {
