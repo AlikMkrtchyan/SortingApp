@@ -23,7 +23,6 @@ public class ExecutionCycle {
     }
 
     public void run() {
-
             isExit = false;
             while (!isExit) {
                 try {
@@ -63,6 +62,7 @@ public class ExecutionCycle {
                     }
                     case 8: {
                         isExit = true;
+                        System.out.println("\nПрограмма завершена");
                         break;
                     }
                     default: {
@@ -71,9 +71,6 @@ public class ExecutionCycle {
                     }
                 }
                 scanner.nextLine();
-
-            System.out.println("\nПрограмма завершена");
-
         }
     }
 
