@@ -15,8 +15,7 @@ public class SortByEvenStrategy implements IStrategy {
     }
 
 
-    @Override
-    public void generationResult() {
+    private void selectObjectSortByOddEven() throws ValidationException {
         SortByEven sort = new SortByEven(dataObject);
         try {
             Scanner scanner = new Scanner(System.in);
@@ -48,8 +47,23 @@ public class SortByEvenStrategy implements IStrategy {
                 default:
                     System.out.println("Неверный ввод, введите цифру от 1 до 4");
             }
+        } catch (InputMismatchException e) {
+            throw new ValidationException("Неверный ввод, введите цифру от 1 до 4");
+        } catch (Exception e) {
+            throw new ValidationException("Проверьте коллекцию на соответствие");
+        }
+
+    }
+
+
+    @Override
+    public void generationResult() {
+        try {
+            selectObjectSortByOddEven();
         } catch (ValidationException validationException) {
             System.out.println(validationException.getMessage());
         }
     }
+
+
 }

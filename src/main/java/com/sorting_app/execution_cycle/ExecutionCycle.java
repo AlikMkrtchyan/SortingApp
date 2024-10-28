@@ -23,54 +23,54 @@ public class ExecutionCycle {
     }
 
     public void run() {
-            isExit = false;
-            while (!isExit) {
-                try {
+        isExit = false;
+        while (!isExit) {
+            try {
                 Printer.printHelp();
                 enterCommand();
-                } catch (ValidationException validationException){
-                    System.out.println(validationException.getMessage());
+            } catch (ValidationException validationException) {
+                System.out.println(validationException.getMessage());
+            }
+            switch (command) {
+                case 1: {
+                    fillCollection();
+                    break;
                 }
-                switch (command) {
-                    case 1: {
-                        fillCollection();
-                        break;
-                    }
-                    case 2: {
-                        sortCollection();
-                        break;
-                    }
-                    case 3: {
-                        findElement();
-                        break;
-                    }
-                    case 4: {
-                        recordCollectionInFile();
-                        break;
-                    }
-                    case 5: {
-                        clearFile();
-                        break;
-                    }
-                    case 6: {
-                        clearCollection();
-                        break;
-                    }
-                    case 7: {
-                        printCollection();
-                        break;
-                    }
-                    case 8: {
-                        isExit = true;
-                        System.out.println("\nПрограмма завершена");
-                        break;
-                    }
-                    default: {
-                        System.out.println("Неверная команда. Попробуйте заново.");
-                        break;
-                    }
+                case 2: {
+                    sortCollection();
+                    break;
                 }
-                scanner.nextLine();
+                case 3: {
+                    findElement();
+                    break;
+                }
+                case 4: {
+                    recordCollectionInFile();
+                    break;
+                }
+                case 5: {
+                    clearFile();
+                    break;
+                }
+                case 6: {
+                    clearCollection();
+                    break;
+                }
+                case 7: {
+                    printCollection();
+                    break;
+                }
+                case 8: {
+                    isExit = true;
+                    System.out.println("\nПрограмма завершена");
+                    break;
+                }
+                default: {
+                    System.out.println("Неверная команда. Попробуйте заново.");
+                    break;
+                }
+            }
+            scanner.nextLine();
         }
     }
 
